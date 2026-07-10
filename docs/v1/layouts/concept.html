@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The site gateway, in one picture — concept</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="t-eyebrow">Concept · one idea</p>
+    <h1 class="t-h1">The site gateway, in one picture</h1>
+    <p class="t-lead">Every sensor on a sea site produces its own stream. Instead of each instrument talking to the central hub on its own, they all publish to one local node — the gateway. That single move is what keeps the fleet from tangling.</p>
+  </div>
+</header>
+
+<main class="wrap" style="max-width:840px; padding-block:var(--sp-8);">
+
+  <p class="t-lead" style="max-width:64ch;">A single sea site carries many instruments. Temperature logs the water column, oxygen watches saturation, the current meter tracks flow, the camera streams the pens. <span class="hl">None of those streams reaches shore on its own.</span> They are peers.</p>
+
+  <figure class="card" style="margin:var(--sp-7) 0 0;">
+    <svg class="dg" viewBox="0 0 760 360" role="img" aria-label="Four sensor streams on one sea site converge on a single site gateway.">
+      <defs>
+        <marker id="dg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrowhead" d="M0,0 L10,5 L0,10 z"/></marker>
+        <marker id="dg-arrow-salmon" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrowhead--salmon" d="M0,0 L10,5 L0,10 z"/></marker>
+      </defs>
+      <path class="dg-edge" d="M110,100 C110,180 380,190 380,250"/>
+      <path class="dg-edge" d="M290,100 C290,160 380,200 380,250"/>
+      <path class="dg-edge" d="M470,100 C470,160 380,200 380,250"/>
+      <path class="dg-edge" d="M650,100 C650,180 380,190 380,250"/>
+      <g><rect class="dg-node" x="30" y="30" width="160" height="70" rx="12"/><text class="dg-label" x="110" y="60" text-anchor="middle">Temperatur</text><text class="dg-sub" x="110" y="80" text-anchor="middle">Vannsøyle, 3–25 m</text></g>
+      <g><rect class="dg-node" x="210" y="30" width="160" height="70" rx="12"/><text class="dg-label" x="290" y="60" text-anchor="middle">Oksygen</text><text class="dg-sub" x="290" y="80" text-anchor="middle">Metning per merd</text></g>
+      <g><rect class="dg-node" x="390" y="30" width="160" height="70" rx="12"/><text class="dg-label" x="470" y="60" text-anchor="middle">Strøm</text><text class="dg-sub" x="470" y="80" text-anchor="middle">Retning og fart</text></g>
+      <g><rect class="dg-node" x="570" y="30" width="160" height="70" rx="12"/><text class="dg-label" x="650" y="60" text-anchor="middle">Kamera</text><text class="dg-sub" x="650" y="80" text-anchor="middle">Stillbilder, merd 1–4</text></g>
+      <g>
+        <rect class="dg-node dg-node--navy" x="230" y="250" width="300" height="96" rx="12"/>
+        <text class="dg-label dg-label--on-navy" x="380" y="286" text-anchor="middle" style="font-size:17px;">Gateway Måkeholmen</text>
+        <text class="dg-label--salmon" x="380" y="310" text-anchor="middle">site gateway · alias «MH»</text>
+        <text class="dg-sub dg-sub--on-navy" x="380" y="330" text-anchor="middle">hub/gw-maakeholmen</text>
+      </g>
+    </svg>
+    <div class="dg-legend" aria-hidden="true">
+      <span><i class="dg-swatch--node"></i> Sensor stream — one instrument's readings</span>
+      <span><i class="dg-swatch--navy"></i> Site gateway — the one node all publish to</span>
+      <span><i class="dg-swatch--salmon"></i> Salmon marks the gateway's role</span>
+    </div>
+    <figcaption class="figcap">Four sensor streams, one gateway, zero shore links per instrument. Each sensor publishes to the gateway rather than to the hub, so the hub sees one connection per site — not one per sensor.</figcaption>
+  </figure>
+
+  <div class="stats" style="margin-top:var(--sp-7);">
+    <div class="stat"><p class="t-h3">4</p><p class="t-caption">sensor streams</p></div>
+    <div class="stat"><p class="t-h3">1</p><p class="t-caption">site gateway</p></div>
+    <div class="stat"><p class="t-h3">0</p><p class="t-caption">direct shore links</p></div>
+    <div class="stat"><p class="t-h3">n→1</p><p class="t-caption">fan-in at the gateway</p></div>
+  </div>
+
+  <blockquote class="quote" style="margin-top:var(--sp-7);">
+    <p>Publish every reading to the local gateway, and the hub stays simple no matter how many instruments a site carries.</p>
+  </blockquote>
+
+  <p class="t-body" style="max-width:64ch; margin-top:var(--sp-6);">The gateway buffers locally — plain store-and-forward — so it works <em>before</em> the shore link does. Cut the site off and it keeps recording; when the link returns, the backlog drains to the hub in order, and a reading delayed is never a reading lost.</p>
+
+  <div class="callout callout--info" style="margin-top:var(--sp-5);">
+    <p class="t-body-s">Want the whole argument? See the <a href="../architecture-explainer.html">architecture explainer</a>, or the decision in <a href="decision-record.html">ADR-0042</a>.</p>
+  </div>
+
+  <footer class="footer" style="margin-top:var(--sp-8);">
+    <p>Sinkaberg – concept · <a href="../index.html">back to index</a> · status: accepted</p>
+  </footer>
+
+</main>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

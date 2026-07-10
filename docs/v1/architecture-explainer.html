@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinkaberg docs kit — architecture explainer (sample)</title>
+
+
+
+<link rel="stylesheet" href="sinkaberg-docs.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <svg class="logo" role="img" aria-label="Sinkaberg" fill="#FFFFFF" viewBox="89 76 440 68" xmlns="http://www.w3.org/2000/svg">
+      <path d="M130.5,142.8c-1.6,0-3.2-0.3-4.8-0.8c-3.7-1.3-6.6-3.9-8.2-7.3c-0.4-0.8-5.9-12.5-10.1-21.4 c-5.3,0-8.6,0-8.9,0l0,0c-2.9-0.4-5.4-2.2-6.6-4.8c-1-2.1-1-4.4-0.2-6.6c0.8-2.1,2.4-3.8,4.5-4.8c2.1-1,4.4-1.1,6.6-0.4 c2.2,0.7,4,2.3,4.9,4.4c0.2,0.4,1.5,3.1,3.2,6.7c5.6,0,12.8-0.1,20.6-0.1l-4.3-9.3c-1.6-3.5-1.7-7.4-0.3-11 c1.4-3.6,4.1-6.5,7.7-8.1c7.4-3.4,16.1-0.5,19.4,6.7c1.6,3.4,6.4,13.7,10.1,21.6c3,0,5.9,0,8.6-0.1l0.2,0l0.2,0 c2.8,0.4,5.2,2.2,6.4,4.7c2,4.3,0,9.4-4.3,11.4c-4.4,2-9.6,0.2-11.5-4c0,0-1.3-2.7-3.1-6.6c-6.6,0-13.5,0.1-20.4,0.1l4.2,9 c1.6,3.5,1.7,7.4,0.3,11c-1.4,3.6-4.1,6.5-7.7,8.1C134.9,142.3,132.7,142.8,130.5,142.8L130.5,142.8z M113.5,113.3 c4.1,8.7,8.9,18.9,9,19.1c1,2.1,2.8,3.7,5,4.5c2.3,0.8,4.8,0.6,7.1-0.4c2.3-1.1,4-2.9,4.9-5.2c0.9-2.2,0.8-4.6-0.2-6.7l-5.3-11.3 C126.5,113.2,119.3,113.2,113.5,113.3L113.5,113.3z M166.5,113c1.2,2.6,2,4.3,2,4.3c0.7,1.5,2.6,2.1,4.2,1.3 c1.6-0.8,2.4-2.6,1.7-4.1c-0.4-0.8-1.1-1.4-2.1-1.6C170.5,112.9,168.6,113,166.5,113L166.5,113z M99.1,107.8c0.5,0,2.6,0,5.7,0 c-1.1-2.4-1.9-4.1-2.1-4.4c-0.3-0.7-0.9-1.2-1.7-1.5c-0.8-0.3-1.7-0.2-2.5,0.2c-0.8,0.4-1.4,1-1.7,1.8c-0.3,0.8-0.3,1.6,0.1,2.3 C97.2,107,98.1,107.6,99.1,107.8L99.1,107.8z M140.9,83.2c-1.4,0-2.8,0.3-4.1,0.9c-2.3,1.1-4,2.9-4.9,5.2c-0.9,2.2-0.8,4.6,0.2,6.7 l5.4,11.6c6.7,0,13.7-0.1,20.4-0.1c-3.5-7.5-7.6-16.3-9-19.3C147.5,85.1,144.3,83.2,140.9,83.2L140.9,83.2z"/>
+      <rect x="239.2" y="90.2" width="6.5" height="39.5"/>
+      <polygon points="285,124.1 284.2,124.1 265.9,90.2 255.3,90.2 255.3,129.6 261.4,129.6 261.4,95.7 262.1,95.7 280.4,129.6 291.1,129.6 291.1,90.2 285,90.2"/>
+      <path d="M351.2,90.2l-13.8,39.5h6.5l3.8-11.1h17.9l4,11.1h6.7L362,90.2H351.2z M349.7,112.9l5.9-17.1h2l6.1,17.1H349.7z"/>
+      <path d="M473.7,114.6c2.2-0.9,3.9-2.3,5.2-4.1c1.2-1.8,1.9-4.2,1.9-7v-0.9c0-2.9-0.6-5.2-1.8-7 c-1.2-1.8-2.9-3.2-5.2-4.1c-2.2-0.9-4.8-1.4-7.8-1.4h-7.3h-2.1h-4.4v39.5h6.5V116h7.3c0.2,0,0.3,0,0.5,0l9.9,13.7h7.7l-11-14.7 C473.3,114.8,473.5,114.7,473.7,114.6z M458.7,95.7h8.1c1.5,0,2.9,0.3,4,1c1.1,0.6,2,1.5,2.6,2.6c0.6,1.1,0.9,2.4,0.9,3.8 c0,1.5-0.3,2.8-0.9,3.9c-0.6,1.1-1.4,2-2.6,2.6c-1.1,0.6-2.4,0.9-4,0.9h-8.1V95.7z"/>
+      <polygon points="425.2,112.4 441.1,112.4 441.1,106.8 425.2,106.8 425.2,95.8 442.1,95.8 442.1,90.2 425.2,90.2 424.1,90.2 418.7,90.2 418.7,129.6 424.1,129.6 425.2,129.6 442.6,129.6 442.6,124 425.2,124"/>
+      <path d="M404.7,109.4c1-0.6,1.9-1.2,2.5-2.1c1.1-1.4,1.7-3.3,1.7-5.8v-0.7c0-3.4-1.1-6-3.3-7.9 c-2.2-1.8-5.5-2.8-9.8-2.8h-7h-1.1h-5.3v39.5h5.3h1.1h8.6c2.9,0,5.4-0.4,7.3-1.3c1.9-0.8,3.4-2.1,4.4-3.7c1-1.6,1.5-3.6,1.5-5.8 v-0.7c0-2.5-0.6-4.4-1.7-5.8C407.8,111,406.4,110,404.7,109.4z M396.6,95.5c2,0,3.5,0.5,4.5,1.6c0.9,1.1,1.4,2.5,1.4,4.2 c0,1.7-0.5,3.1-1.4,4.2c-0.9,1.1-2.4,1.6-4.5,1.6h-7.8V95.5H396.6z M402.5,122.7c-1.1,1.1-2.5,1.6-4.5,1.6h-9.2v-12h9.2 c2,0,3.5,0.5,4.5,1.6c1,1.1,1.6,2.5,1.6,4.4C404.1,120.2,403.6,121.6,402.5,122.7z"/>
+      <path d="M223.5,108.8c-1.9-0.9-4.2-1.5-6.9-1.7l-3.7-0.3c-2-0.2-3.5-0.7-4.4-1.7c-1-1-1.4-2.1-1.4-3.4 c0-1.1,0.3-2.1,0.8-3c0.5-0.9,1.4-1.7,2.4-2.3c1.1-0.6,2.4-0.9,4.1-0.9c1.7,0,3.1,0.3,4.2,0.9c1.1,0.6,1.9,1.4,2.4,2.4 c0.5,1,0.8,2,0.8,3.1h6.1c0-2.4-0.6-4.5-1.7-6.3c-1.1-1.8-2.7-3.1-4.7-4.1c-2-1-4.4-1.5-7.1-1.5c-2.7,0-5,0.5-7,1.5 c-2,1-3.6,2.3-4.7,4c-1.1,1.7-1.7,3.7-1.7,6.1c0,3,1,5.5,3.1,7.4c2.1,1.9,4.8,2.9,8.3,3.2l3.7,0.4c2.5,0.2,4.3,0.8,5.6,1.7 c1.2,0.9,1.8,2.1,1.8,3.5c0,1.2-0.3,2.2-0.9,3.2c-0.6,1-1.6,1.7-2.9,2.3c-1.3,0.6-3,0.9-5,0.9c-2.2,0-4-0.3-5.3-1 c-1.3-0.7-2.2-1.5-2.8-2.5c-0.6-1-0.9-2.1-0.9-3.1h-6c0,2.3,0.6,4.4,1.7,6.2c1.2,1.8,2.9,3.3,5.1,4.3c2.2,1,5,1.6,8.2,1.6 c3,0,5.6-0.5,7.9-1.5c2.2-1,4-2.4,5.2-4.2c1.2-1.8,1.9-3.8,1.9-6.2c0-2.1-0.5-3.9-1.6-5.4C226.9,110.9,225.4,109.7,223.5,108.8z"/>
+      <path d="M526,110.1h-20.3v4.8h11.4v5.3c-0.8,0.9-1.8,1.6-3,2.3c-2,1.1-4.4,1.7-7.1,1.7c-1.9,0-3.7-0.3-5.4-1 c-1.6-0.6-3-1.6-4.2-2.8c-1.2-1.2-2.1-2.7-2.7-4.5c-0.6-1.8-1-3.8-1-6.2c0-2.1,0.3-4,0.9-5.7c0.6-1.7,1.4-3.2,2.5-4.4 c1.1-1.2,2.4-2.2,3.9-2.8c1.5-0.7,3.2-1,5.1-1c1.9,0,3.6,0.3,5.1,1c1.6,0.7,2.9,1.6,3.9,2.9c1,1.3,1.7,2.8,1.9,4.7h6.3 c-0.2-2.8-1.1-5.3-2.6-7.4c-1.5-2.1-3.5-3.8-6-5c-2.5-1.2-5.3-1.8-8.5-1.8c-3,0-5.6,0.5-7.9,1.6c-2.3,1.1-4.3,2.5-5.9,4.3 c-1.6,1.8-2.8,3.9-3.6,6.1c-0.8,2.3-1.2,4.6-1.2,6.9v1.1c0,2.6,0.4,5.1,1.3,7.5c0.9,2.4,2.1,4.4,3.8,6.2c1.7,1.8,3.7,3.2,6.1,4.2 c2.4,1,5.1,1.5,8.2,1.5c3.5,0,6.6-0.6,9.3-1.9c2.7-1.3,4.9-3.1,6.5-5.4v-7.4h3.1V110.1z"/>
+      <polygon points="330.1,90.2 322.7,90.2 307.1,108.6 307.1,90.2 300.6,90.2 300.6,129.6 307.1,129.6 307.1,111.2 310.6,111.2 325.8,129.6 333.8,129.6 315.4,107.5"/>
+    </svg>
+    <p class="t-eyebrow">Sinkaberg docs kit · sensortelemetri · arkitektur</p>
+    <h1 class="t-display">One site, many sensors, one gateway</h1>
+    <p class="t-lead">The telemetry platform is not four point-to-point feeds, and not one monolith. It is one central hub fed by independent site gateways – each collecting its own sensors' readings, buffering them locally, and forwarding the moment the uplink allows. Every site, system and name on this page is fictional.</p>
+    <div class="metarow mt6">
+      <span class="badge">sample document</span>
+      <span class="pill">docs kit · worked example — all content fictional</span>
+      <a href="index.html" style="color:var(--on-navy-2);">Repo index →</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+
+  <!-- ============ TABLE OF CONTENTS ============ -->
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">Contents</p>
+    <ol>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#site">One site, four sensors</a></li>
+      <li><a href="#whole">One hub, many sites</a></li>
+      <li><a href="#alerts">How an alert is raised</a></li>
+      <li><a href="#addresses">Addresses that outlive a dashboard</a></li>
+      <li><a href="#registers">Three names for one idea</a></li>
+      <li><a href="#portable">Portable by construction</a></li>
+      <li><a href="#sources">Decisions and further reading</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ DOCUMENT BODY ============ -->
+  <main class="doc">
+
+    <!-- 01 -->
+    <section class="section" id="background">
+      <p class="t-eyebrow">01 · Background</p>
+      <h2 class="t-h2">Why edge buffering was needed</h2>
+      <p class="t-body">In the first season, readings travelled straight from sensor to the central store. The moment a storm took a site's uplink down, that window of data was simply gone – and storms are exactly when oxygen and current readings matter most. The <code>readings/</code> tables had gaps precisely where the operational questions were hardest.</p>
+      <p class="t-body mt5">The redesign put a gateway on every site. Sensors publish to the gateway over the local network; the gateway stores everything it hears and forwards to the hub when the link is up – classic store-and-forward, with the hub treating late arrivals as first-class. The result is <span class="hl">one platform, buffered at the edge</span>. One constraint runs through every decision below: no reading may depend on the uplink being alive at the moment it is measured – so no single network path, and no single vendor's dashboard, may be load-bearing.</p>
+    </section>
+
+    <!-- 02 -->
+    <section class="section" id="site">
+      <p class="t-eyebrow">02 · The relatable case</p>
+      <h2 class="t-h2">One site, four sensors</h2>
+      <p class="t-lead">A single sea site carries several kinds of sensor, and each measures something different. None of them talks to the hub directly. They are peers, and each simply publishes to the same site gateway.</p>
+
+      <figure class="card mt5" style="margin:var(--sp-5) 0 0;">
+        <svg class="dg" viewBox="0 0 760 384" role="img" aria-label="Four sensors on one sea site converge on a single site gateway for locality Måkeholmen.">
+          <defs>
+            <marker id="dg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrowhead" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="dg-arrow-salmon" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrowhead--salmon" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+
+          <!-- edges: each sensor converges on the gateway top-centre -->
+          <path class="dg-edge" d="M110,96 C110,170 380,180 380,258"/>
+          <path class="dg-edge" d="M290,96 C290,150 380,190 380,258"/>
+          <path class="dg-edge" d="M470,96 C470,150 380,190 380,258"/>
+          <path class="dg-edge" d="M650,96 C650,170 380,180 380,258"/>
+
+          <!-- sensor nodes -->
+          <g>
+            <rect class="dg-node" x="30" y="28" width="160" height="68" rx="12"/>
+            <text class="dg-label" x="110" y="56" text-anchor="middle">Temperatur</text>
+            <text class="dg-sub" x="110" y="76" text-anchor="middle">Sjøtemperatur, 3 m</text>
+          </g>
+          <g>
+            <rect class="dg-node" x="210" y="28" width="160" height="68" rx="12"/>
+            <text class="dg-label" x="290" y="56" text-anchor="middle">Oksygen</text>
+            <text class="dg-sub" x="290" y="76" text-anchor="middle">Metning per merd</text>
+          </g>
+          <g>
+            <rect class="dg-node" x="390" y="28" width="160" height="68" rx="12"/>
+            <text class="dg-label" x="470" y="56" text-anchor="middle">Strøm</text>
+            <text class="dg-sub" x="470" y="76" text-anchor="middle">Retning og fart</text>
+          </g>
+          <g>
+            <rect class="dg-node" x="570" y="28" width="160" height="68" rx="12"/>
+            <text class="dg-label" x="650" y="56" text-anchor="middle">Kamera</text>
+            <text class="dg-sub" x="650" y="76" text-anchor="middle">Fôrspill, stillbilder</text>
+          </g>
+
+          <!-- site gateway: the one emphasised node -->
+          <g>
+            <rect class="dg-node dg-node--navy" x="230" y="258" width="300" height="96" rx="12"/>
+            <text class="dg-label dg-label--on-navy" x="380" y="292" text-anchor="middle" style="font-size:17px;">Sitegateway Måkeholmen</text>
+            <text class="dg-label--salmon" x="380" y="316" text-anchor="middle">edge buffer · alias «MH»</text>
+            <text class="dg-sub dg-sub--on-navy" x="380" y="336" text-anchor="middle">hub/maakeholmen</text>
+          </g>
+        </svg>
+        <div class="dg-legend" aria-hidden="true">
+          <span><i class="dg-swatch--node"></i> Sensor – one reading stream</span>
+          <span><i class="dg-swatch--navy"></i> Site gateway – buffers and forwards</span>
+          <span><i class="dg-swatch--salmon"></i> Salmon marks the gateway's role</span>
+        </div>
+        <figcaption class="figcap">Four sensors, one gateway, zero direct-to-hub feeds. Each sensor publishes to the gateway rather than to the hub, so an uplink outage costs a delayed flush, not lost data.</figcaption>
+      </figure>
+
+      <div class="stats mt6">
+        <div class="stat"><p class="t-h3">4</p><p class="t-caption">sensor streams</p></div>
+        <div class="stat"><p class="t-h3">1</p><p class="t-caption">gateway per site</p></div>
+        <div class="stat"><p class="t-h3">72 h</p><p class="t-caption">local edge buffer</p></div>
+        <div class="stat"><p class="t-h3">O(n)</p><p class="t-caption">feeds, not O(n²)</p></div>
+      </div>
+
+      <div class="callout callout--info mt5">
+        <p class="t-body-s"><strong>A site works alone.</strong> Cut the uplink and readings keep landing in the gateway's local store – when the link returns, the hub catches up and marks the window «buffered», never missing. A reference to another site's data, like <code>ternebaaen/oksygen-01</code>, renders as the plain label «Oksygen (Ternebåen)» while offline, never a broken link. And the gateway is provisioned from the site register, so it exists before the first sensor is mounted.</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="section" id="whole">
+      <p class="t-eyebrow">03 · The whole</p>
+      <h2 class="t-h2">One hub, many sites</h2>
+      <p class="t-lead">Each site is its own bounded world – own gateway, own sensors, own maintenance pace. A thin hub layer at the top makes the sites read and behave as one platform.</p>
+
+      <div class="whole mt5">
+        <div class="whole-head">
+          <p class="t-h5" style="margin:0;">Telemetry platform</p>
+          <span class="pill">One hub · many sites</span>
+        </div>
+        <div class="layer">
+          <span class="layer-tag">Hub&nbsp;layer</span>
+          <div class="layer-item"><b>Central store</b><span>one time-series table across all sites</span></div>
+          <div class="layer-item"><b>Publish–subscribe fan-out</b><span>dashboards and alerts subscribe; sensors never know</span></div>
+          <div class="layer-item"><b>Site contract</b><span>register · publish · heartbeat</span></div>
+        </div>
+        <div class="area-grid">
+          <div class="area-box"><span class="ab-name">Måkeholmen <span class="badge">you are here</span></span><span class="ab-owner">owner · Drift</span><span class="ab-cat">temperatur, oksygen, strøm, kamera…</span></div>
+          <div class="area-box"><span class="ab-name">Ternebåen</span><span class="ab-owner">owner · Drift</span><span class="ab-cat">temperatur, oksygen, kamera…</span></div>
+          <div class="area-box"><span class="ab-name">«Bøyeloggen»</span><span class="ab-owner">owner · Vedlikehold</span><span class="ab-cat">readings log, morning review…</span></div>
+          <div class="area-box"><span class="ab-name">«Strømvarsel»</span><span class="ab-owner">owner · HMS</span><span class="ab-cat">thresholds, alerts, escalation…</span></div>
+          <div class="area-box"><span class="ab-name">«Vaktlista»</span><span class="ab-owner">owner · HMS</span><span class="ab-cat">on-call roster, contact routes…</span></div>
+          <div class="area-box ghost"><span class="ab-name">+ neste lokalitet</span><span class="ab-owner">recursion-ready · same contract</span><span class="ab-cat">a new site slots in untouched</span></div>
+        </div>
+      </div>
+      <p class="t-body mt5">Every box – a site feeding the hub or a consumer reading from it – answers the same <code>register · publish · heartbeat</code> contract, so the platform grows by configuration. We run two sites today, and adding a third is a register entry, not a project.</p>
+    </section>
+
+    <!-- 04 -->
+    <section class="section" id="alerts">
+      <p class="t-eyebrow">04 · How an alert is raised</p>
+      <h2 class="t-h2">From reading to wake-up call in four steps</h2>
+      <p class="t-lead">There is no opaque scoring model. Raising an alert is a plain threshold anyone can read in config; a short confirm window filters noise, and a person acknowledges every alarm.</p>
+
+      <ol class="steps mt5">
+        <li>
+          <p class="t-body"><strong>Threshold crossed.</strong> Each stream carries limits set per site in «Strømvarsel» – for instance, oxygen saturation below 65 % in any pen.</p>
+        </li>
+        <li>
+          <p class="t-body"><strong>Confirm window.</strong> The hub waits a short window – five minutes by default – so a single noisy reading never pages anyone. Sustained breach, real alert.</p>
+        </li>
+        <li>
+          <p class="t-body"><strong>Notify on-call.</strong> «Strømvarsel» looks up tonight's name in «Vaktlista» and sends the alert, escalating to the backup after fifteen unacknowledged minutes.</p>
+        </li>
+        <li>
+          <p class="t-body"><strong>Log and review.</strong> Every alert – acknowledged, escalated or expired – lands in «Bøyeloggen» for the morning review.</p>
+        </li>
+      </ol>
+
+      <div class="callout callout--note mt5">
+        <p class="t-body-s"><strong>Two rhythms.</strong> Thresholds are evaluated as readings arrive, so fast breaches page immediately – and a periodic sweep checks every sensor's heartbeat, so a sensor that has gone silent is an alert too, not a quiet gap.</p>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="section" id="addresses">
+      <p class="t-eyebrow">05 · Addressing</p>
+      <h2 class="t-h2">Addresses that outlive a dashboard</h2>
+      <p class="t-lead">A reading stores a surface-independent sensor id. A trivial resolver – the site register plus string substitution – turns it into the right path wherever it is read. Swap the dashboard tool or replace the physical unit, and the stored data does not move.</p>
+
+      <p class="t-body mt5">The stored, canonical form:</p>
+      <pre class="code"><code>sensor: maakeholmen/temp-03
+        └─────────┘ └─────┘
+        site slug    sensor id (URL-friendly slug)</code></pre>
+
+      <p class="t-body mt6">The same address, rendered per surface by the resolver:</p>
+      <div class="grid mt5">
+        <div class="card">
+          <p class="t-eyebrow" style="color:var(--ink-3);">On the dashboard</p>
+          <p class="t-body-s" style="margin-top:var(--sp-2);"><code>Måkeholmen › Temperatur › temp-03</code></p>
+        </div>
+        <div class="card">
+          <p class="t-eyebrow" style="color:var(--ink-3);">In the API</p>
+          <p class="t-body-s" style="margin-top:var(--sp-2);"><code>hub/api/sites/maakeholmen/sensors/temp-03</code></p>
+        </div>
+        <div class="card">
+          <p class="t-eyebrow" style="color:var(--ink-3);">In the export</p>
+          <p class="t-body-s" style="margin-top:var(--sp-2);"><code>readings.parquet · #maakeholmen-temp-03</code></p>
+        </div>
+      </div>
+      <p class="t-body mt5">Sensor ids are required, unique, URL-friendly slugs. A site resolves its own ids standalone; anything it cannot reach degrades to a label, never a broken link.</p>
+    </section>
+
+    <!-- 06 -->
+    <section class="section" id="registers">
+      <p class="t-eyebrow">06 · Terminology</p>
+      <h2 class="t-h2">Three names for one idea, never for one reader</h2>
+      <p class="t-lead">Pattern names buy legitimacy and live in the decision records. Working names carry the daily engineering. User-facing names are what the crew sees. No single reader sees more than one.</p>
+
+      <div class="mt5" style="overflow-x:auto;">
+        <table class="table">
+          <thead>
+            <tr><th>Concept</th><th>Pattern · in the ADR</th><th>Working name</th><th>User-facing</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>one reading feed</td><td>publish–subscribe topic</td><td><strong>sensor stream</strong></td><td><code>«måleserie»</code></td></tr>
+            <tr><td>surviving an outage</td><td>store-and-forward</td><td><strong>edge buffer</strong></td><td>hidden</td></tr>
+            <tr><td>the site-side collector</td><td>messaging gateway</td><td><strong>site gateway</strong></td><td><code>«sitegateway»</code></td></tr>
+            <tr><td>alert coordination</td><td>mediator</td><td><strong>alert engine</strong></td><td><code>«Strømvarsel»</code></td></tr>
+            <tr><td>the readings shape</td><td>star schema fact table</td><td><strong>readings table</strong></td><td>hidden</td></tr>
+            <tr><td>a monitored place</td><td>entity</td><td><strong>site</strong></td><td><code>«lokalitet»</code></td></tr>
+            <tr><td>proof of life</td><td>heartbeat</td><td><strong>heartbeat</strong></td><td>hidden</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout--note mt5">
+        <p class="t-body-s">Where a name is already plain – <strong>sensor</strong>, <strong>reading</strong>, <strong>dashboard</strong> – the columns simply collapse. No translation needed.</p>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="section" id="portable">
+      <p class="t-eyebrow">07 · The constraint that shaped everything</p>
+      <h2 class="t-h2">Portable by construction</h2>
+      <p class="t-lead">The valuable asset is the readings and their history. That lives entirely in plain files and documented patterns. The tooling is convenience on top – swap the dashboard, and the data is untouched.</p>
+
+      <div class="cols mt5">
+        <div class="card">
+          <p class="t-eyebrow">The spec · sovereign · portable</p>
+          <h4 class="t-h4" style="margin-top:var(--sp-2);">Plain files and documented patterns</h4>
+          <ul class="t-body-s" style="margin:var(--sp-3) 0 0; padding-left:var(--sp-5);">
+            <li>Readings as plain CSV and parquet</li>
+            <li>Sensor ids <code>&lt;site&gt;/&lt;sensor&gt;</code> and a site register</li>
+            <li>Thresholds as human-readable config per site</li>
+            <li>The site contract – register · publish · heartbeat</li>
+            <li>The confirm-window rule for filtering noise</li>
+          </ul>
+          <p class="t-caption" style="margin-top:var(--sp-4);">No dashboard is required to read, chart or export it.</p>
+        </div>
+        <div class="card">
+          <p class="t-eyebrow" style="color:var(--ink-3);">The tooling · swappable</p>
+          <h4 class="t-h4" style="margin-top:var(--sp-2);">One tool today, another tomorrow</h4>
+          <ul class="t-body-s" style="margin:var(--sp-3) 0 0; padding-left:var(--sp-5);">
+            <li>Dashboards – charting the readings table</li>
+            <li>Alert delivery – SMS today, app push tomorrow</li>
+            <li>Camera analytics – the image-judgment step</li>
+            <li>Ingestion service – the hub-side receiver</li>
+          </ul>
+          <p class="t-caption" style="margin-top:var(--sp-4);">Replaceable without touching a single stored reading.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section class="section" id="sources">
+      <p class="t-eyebrow">08 · Decisions and further reading</p>
+      <h2 class="t-h2">Where this is written down</h2>
+      <p class="t-body">The full decision record is <code>docs/adr/0042-edge-buffered-telemetry.md</code>; the terminology is <code>docs/architecture/glossary.md</code>. Both are as fictional as the sites.</p>
+
+      <h4 class="t-h4 mt6">The patterns we lean on</h4>
+      <p class="t-body-s">We compose road-tested patterns rather than invent one. Each links to an authoritative public source.</p>
+      <div class="mt5" style="overflow-x:auto;">
+        <table class="table">
+          <thead><tr><th>Pattern</th><th>Job in this design</th><th>Read more</th></tr></thead>
+          <tbody>
+            <tr><td>Publish–Subscribe Channel</td><td>Sensors publish; dashboards and alerts subscribe</td><td><a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html">enterpriseintegrationpatterns.com</a></td></tr>
+            <tr><td>Guaranteed Delivery</td><td>Store-and-forward buffering through uplink outages</td><td><a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/GuaranteedMessaging.html">enterpriseintegrationpatterns.com</a></td></tr>
+            <tr><td>Messaging Gateway</td><td>The site gateway hides transport from the sensors</td><td><a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html">enterpriseintegrationpatterns.com</a></td></tr>
+            <tr><td>Mediator</td><td>The alert engine coordinates thresholds, roster and delivery</td><td><a href="https://refactoring.guru/design-patterns/mediator">refactoring.guru</a></td></tr>
+            <tr><td>Star schema</td><td>Readings as one fact table; sites and sensors as dimensions</td><td><a href="https://en.wikipedia.org/wiki/Star_schema">wikipedia.org</a></td></tr>
+            <tr><td>Idempotent Receiver</td><td>A replayed buffer flush never double-counts a reading</td><td><a href="https://www.enterpriseintegrationpatterns.com/patterns/messaging/IdempotentReceiver.html">enterpriseintegrationpatterns.com</a></td></tr>
+            <tr><td>Event Sourcing</td><td>The readings log is append-only; views are derived</td><td><a href="https://martinfowler.com/eaaDev/EventSourcing.html">martinfowler.com</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="t-h4 mt6">Still open</h4>
+      <div class="callout callout--warning mt5">
+        <p class="t-body-s">The confirm-window default per sensor type · whether camera stills belong in the hub or stay on site · whether «Ternebåen» gets a second gateway for redundancy.</p>
+      </div>
+
+      <footer class="footer" style="margin-top:var(--sp-7);">
+        <p>Sinkaberg · docs kit worked example, 2026 · all sites, systems and decisions fictional</p>
+      </footer>
+    </section>
+
+  </main>
+</div>
+
+<script src="sinkaberg-docs.js" defer></script>
+</body>
+</html>

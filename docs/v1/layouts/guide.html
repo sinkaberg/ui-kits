@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a new sensor site — guide</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="t-eyebrow">Guide · onboarding</p>
+    <h1 class="t-h1">Add a new sensor site</h1>
+    <p class="t-lead">Bring a new sea site onto the telemetry platform — its own site id, gateway and network plan — so its readings reach the hub without touching any other site.</p>
+    <div class="metarow mt6">
+      <span class="status status--accepted">Accepted</span>
+      <span class="pill">≈ half a day</span>
+      <span class="t-body-s" style="color:var(--on-navy-3);">owner · Drift · updated 2024-06-02</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">Steps</p>
+    <ol>
+      <li><a href="#before">Before you start</a></li>
+      <li><a href="#repo">Register the site</a></li>
+      <li><a href="#catalog">Configure the gateway</a></li>
+      <li><a href="#sensors">Mount and pair sensors</a></li>
+      <li><a href="#register">Announce to the hub</a></li>
+      <li><a href="#verify">Verify end to end</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="before">
+      <p class="t-eyebrow">Prerequisites</p>
+      <h2 class="t-h2">Before you start</h2>
+      <p class="t-lead">You need three things in hand. If any is missing, stop here and sort it first — the later steps assume all three.</p>
+      <dl class="dl mt5">
+        <dt>A site id</dt><dd>The short code the hub will know the site by — «MH» for «Måkeholmen», «TB» for «Ternebåen».</dd>
+        <dt>Gateway hardware</dt><dd>A provisioned gateway with local storage sized for at least a week of buffered readings.</dd>
+        <dt>A network plan</dt><dd>The site network the sensors will publish over, plus the shore link the gateway will forward on.</dd>
+      </dl>
+      <div class="callout callout--info mt5"><p class="t-body-s">A new site is independent. It never depends on another site — only on the hub, and even that degrades gracefully: the gateway buffers locally until the link is back.</p></div>
+    </section>
+
+    <section class="section" id="repo">
+      <p class="t-eyebrow">Step 1</p>
+      <h2 class="t-h2">Register the site in «Bøyeloggen»</h2>
+      <p class="t-body">Create the site record. «Bøyeloggen» lays out the standard skeleton; the top-level folders match the streams the site will carry.</p>
+      <div class="tree mt5">
+        <ul>
+          <li><span class="dir">maakeholmen/</span><span class="anno">site id = «MH»</span>
+            <ul>
+              <li><span class="file">site.json</span><span class="anno">machine-readable, one per site</span></li>
+              <li><span class="dir">sensorer/</span></li>
+              <li><span class="dir">nett/</span></li>
+              <li><span class="file">README.md</span></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <p class="t-body mt5">Press <kbd>⌘</kbd> <kbd>K</kbd> in «Bøyeloggen» to scaffold from the site template, or copy an existing site and empty its records.</p>
+    </section>
+
+    <section class="section" id="catalog">
+      <p class="t-eyebrow">Step 2</p>
+      <h2 class="t-h2">Configure the gateway</h2>
+      <p class="t-lead">The site file is how the hub sees your site without polling every sensor. Keep it small and honest.</p>
+      <div class="codeblock mt5">
+        <div class="codeblock__bar"><span class="codeblock__name">maakeholmen/site.json</span><span class="codeblock__lang">json</span></div>
+        <pre><code><span class="ln">{</span><span class="ln ln--hl">  "site": "mh",</span><span class="ln">  "owner": "Drift",</span><span class="ln">  "forward": ["buffer", "order", "dedupe"],</span><span class="ln">  "sensors": ["temperatur", "oksygen", "stroem", "kamera"],</span><span class="ln cmt">  // topics this gateway publishes to the hub</span><span class="ln">  "topics": ["readings", "alerts"]</span><span class="ln">}</span></code></pre>
+      </div>
+      <div class="callout callout--note mt5"><p class="t-body-s">The <code>forward</code> array must list all three behaviours. A gateway that can't <code>dedupe</code> will double-count readings after every outage, and the hub won't accept its stream.</p></div>
+    </section>
+
+    <section class="section" id="sensors">
+      <p class="t-eyebrow">Step 3</p>
+      <h2 class="t-h2">Mount and pair sensors</h2>
+      <p class="t-body">Mount each instrument, then pair it against the gateway over the site network. Sensors publish to the gateway — never to shore.</p>
+      <div class="compare mt5">
+        <div class="compare-col compare--do">
+          <header><span class="cc-icon">✓</span> Do</header>
+          <ul>
+            <li>Pair every sensor to the gateway's local broker.</li>
+            <li>Let the gateway stamp readings with site and sensor id.</li>
+            <li>Record each instrument's position — pen and depth — at pairing time.</li>
+          </ul>
+        </div>
+        <div class="compare-col compare--dont">
+          <header><span class="cc-icon">✕</span> Don't</header>
+          <ul>
+            <li>Point a sensor at the hub's address directly.</li>
+            <li>Hard-code the shore link's IP in a sensor config.</li>
+            <li>Reuse a sensor id from a decommissioned instrument.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="register">
+      <p class="t-eyebrow">Step 4</p>
+      <h2 class="t-h2">Announce the site to the hub</h2>
+      <p class="t-body">Add one line to the hub's site list and open a pull request. The hub operator reviews and merges — this is the only central coordination the whole process needs.</p>
+      <div class="codeblock mt5">
+        <div class="codeblock__bar"><span class="codeblock__name">hub/sites.toml</span><span class="codeblock__lang">diff</span></div>
+        <pre><code><span class="ln">[sites]</span><span class="ln">ternebaaen  = "tb.gw.telemetri.example.no"</span><span class="ln ln--add">maakeholmen = "mh.gw.telemetri.example.no"</span></code></pre>
+      </div>
+    </section>
+
+    <section class="section" id="verify">
+      <p class="t-eyebrow">Step 5</p>
+      <h2 class="t-h2">Verify end to end</h2>
+      <p class="t-lead">Two checks prove the site is a good citizen — one standalone, one against the hub.</p>
+      <ol class="steps mt5">
+        <li><p class="t-body"><strong>Standalone.</strong> Pull the shore link and let the site run alone. Every sensor keeps publishing; the gateway buffers, and nothing errors.</p></li>
+        <li><p class="t-body"><strong>Against the hub.</strong> Restore the link and watch «Bøyeloggen». The backlog should drain oldest-first, and a test threshold in «Strømvarsel» should page the on-call from «Vaktlista».</p></li>
+      </ol>
+      <div class="callout callout--success mt6"><p class="t-body-s"><strong>Done.</strong> The site now forwards to the hub and survives an outage. Add instruments — extra depths, more pens — only when Drift actually needs the readings.</p></div>
+
+      <footer class="footer" style="margin-top:var(--sp-7);">
+        <p>Sinkaberg – guide · <a href="../index.html">back to index</a> · status: accepted</p>
+      </footer>
+    </section>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

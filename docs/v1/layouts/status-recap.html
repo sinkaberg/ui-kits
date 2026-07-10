@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telemetry programme — status recap · uke 12–13</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="t-eyebrow">Status recap · bi-weekly</p>
+    <h1 class="t-h1">Telemetry programme — since we last spoke</h1>
+    <p class="t-lead">The two-minute version first, detail underneath. Three things shipped, one decision needs this room, one risk is being watched.</p>
+    <div class="metarow mt6">
+      <span class="pill">Period · uke 12–13</span>
+      <span class="badge">1 decision needed</span>
+      <span class="t-body-s" style="color:var(--on-navy-3);">host · Drift · next recap uke 15</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">Recap</p>
+    <ol>
+      <li><a href="#tldr">TL;DR</a></li>
+      <li><a href="#happened">What happened</a></li>
+      <li><a href="#decisions">Decisions needed</a></li>
+      <li><a href="#risks">Risks &amp; watchlist</a></li>
+      <li><a href="#next">Next two weeks</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="tldr">
+      <p class="t-eyebrow">01 · The short version</p>
+      <h2 class="t-h2">TL;DR</h2>
+      <div class="stats mt5">
+        <div class="stat"><p class="t-h3">12</p><p class="t-caption">gateways on v2 · +3</p></div>
+        <div class="stat"><p class="t-h3">2</p><p class="t-caption">sites live · «Måkeholmen», «Ternebåen»</p></div>
+        <div class="stat"><p class="t-h3">96%</p><p class="t-caption">readings within 5 min</p></div>
+        <div class="stat"><p class="t-h3">0</p><p class="t-caption">data-loss incidents</p></div>
+      </div>
+      <p class="t-body mt5" style="max-width:64ch;">The gateway v2 rollout reached «Måkeholmen», backfill tooling landed, and alert dedup is in review for «Strømvarsel». <span class="hl">We need this room to pick the retention window for raw readings</span> — it is the only thing blocking the archive build.</p>
+    </section>
+
+    <section class="section" id="happened">
+      <p class="t-eyebrow">02 · Since uke 11</p>
+      <h2 class="t-h2">What happened</h2>
+      <ul class="timeline mt5">
+        <li class="is-done">
+          <div class="tl-meta"><span class="tl-date">uke 12</span><span class="tl-title">ADR-0042 accepted</span> <span class="status status--accepted">Accepted</span></div>
+          <p class="t-body-s" style="margin:0;">Store-and-forward at the gateway is now the standing decision. Discussion closed after the «Ternebåen» pilot.</p>
+        </li>
+        <li class="is-done">
+          <div class="tl-meta"><span class="tl-date">uke 12</span><span class="tl-title">Gateway v2 live at «Måkeholmen»</span></div>
+          <p class="t-body-s" style="margin:0;">First production site on the new forwarder; buffer replay verified after a planned 40-minute cut.</p>
+        </li>
+        <li class="is-done">
+          <div class="tl-meta"><span class="tl-date">uke 13</span><span class="tl-title">Backfill tooling shipped</span></div>
+          <p class="t-body-s" style="margin:0;">Outage windows now fill in oldest-first automatically; the uke-12 test gap closed itself in under an hour.</p>
+        </li>
+        <li class="is-current">
+          <div class="tl-meta"><span class="tl-date">in flight</span><span class="tl-title">Alert dedup in «Strømvarsel»</span></div>
+          <p class="t-body-s" style="margin:0;">Draft collapses repeated «gateway silent» alerts into one incident per outage. Review with Drift in uke 14.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="decisions">
+      <p class="t-eyebrow">03 · From this room</p>
+      <h2 class="t-h2">Decisions needed</h2>
+      <div class="callout callout--warning mt5">
+        <p class="t-body"><strong>Pick the retention window for raw readings.</strong> The gateway buffer and the hub both keep raw readings today; the archive needs one rule. Proposal: 13 months raw at the hub, 30 days at the gateway, aggregates kept indefinitely. Without this, the archive build for «Ternebåen» stays blocked.</p>
+        <p class="t-body-s" style="margin-top:var(--sp-3); color:var(--fg-3);">Needed by · uke 14 — before the archive build starts</p>
+      </div>
+    </section>
+
+    <section class="section" id="risks">
+      <p class="t-eyebrow">04 · Watching</p>
+      <h2 class="t-h2">Risks &amp; watchlist</h2>
+      <table class="table mt5">
+        <thead><tr><th>Risk</th><th>Trend</th><th>Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>Buffer disks at older gateways under 20% headroom</td><td>↗ rising</td><td>Vedlikehold swapping disks at the three oldest sites; revisit next recap</td></tr>
+          <tr><td>Site alias («MH») colliding with a sensor code in dashboards</td><td>→ flat</td><td>Dashboard labels switched to full site names; alias kept for the on-call radio only</td></tr>
+          <tr><td>Alert fatigue on «Vaktlista» before dedup lands</td><td>→ flat</td><td>Dedup draft in review uke 14; rota unchanged until then</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="next">
+      <p class="t-eyebrow">05 · Commitments</p>
+      <h2 class="t-h2">Next two weeks</h2>
+      <ol class="steps mt5">
+        <li><p class="t-body"><strong>«Ternebåen» v2 rollout</strong> — second site cut over to the new forwarder, assuming the retention decision lands.</p></li>
+        <li><p class="t-body"><strong>Alert dedup v1</strong> — reviewed and switched on in «Strømvarsel».</p></li>
+        <li><p class="t-body"><strong>Archive build</strong> — retention rule implemented at the hub and written into the runbook.</p></li>
+      </ol>
+      <div class="callout callout--note mt6"><p class="t-body-s">Carried over from last recap: none — all three commitments from uke 11 landed.</p></div>
+
+      <footer class="footer" style="margin-top:var(--sp-7);">
+        <p>Sinkaberg – status recap · <a href="../index.html">back to index</a> · next recap uke 15</p>
+      </footer>
+    </section>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

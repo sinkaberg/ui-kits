@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Icons — Sinkaberg docs kit</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+<style>
+  .icon-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(120px, 1fr)); gap:var(--sp-4); }
+  .icon-tile { display:flex; flex-direction:column; align-items:center; gap:var(--sp-2); padding:var(--sp-4) var(--sp-2); background:var(--bg-1); border:1px solid var(--line); border-radius:var(--r-sm); }
+  .icon-tile img { width:56px; height:56px; }
+  .icon-tile .t-caption { font-family:var(--font-mono); font-size:0.75rem; text-align:center; }
+</style>
+</head>
+<body>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow"><a href="../index.html">Docs</a> · <a href="../style-guide.html">Style guide</a> · Elements</p>
+    <h1 class="t-h1">Icons</h1>
+    <p class="t-lead">The 13 bespoke Sinkaberg line icons — the value chain from smolt to salmon factory, plus a few abstractions. Each ships in four brand colours as plain SVG files under <code>brand/assets/icons/</code>.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">On this page</p>
+    <ol>
+      <li><a href="#set">The set</a></li>
+      <li><a href="#variants">Colour variants</a></li>
+      <li><a href="#usage">Using them</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="set">
+      <p class="t-eyebrow">01 · The set</p>
+      <h2 class="t-h2">Thirteen icons, one line weight</h2>
+      <p class="t-lead">All icons share a <code>100 × 100</code> viewBox, filled paths (no strokes) and a single colour per file, so they sit evenly at any size. Shown here in the primary variant, <code>blue-deep</code>.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live · blue-deep</div>
+        <div class="demo__stage">
+          <div class="icon-grid">
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/aquaculture.svg" alt="Aquaculture"><p class="t-caption">aquaculture</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/communication.svg" alt="Communication"><p class="t-caption">communication</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/fish.svg" alt="Fish"><p class="t-caption">fish</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/fish-welfare.svg" alt="Fish welfare"><p class="t-caption">fish-welfare</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/goal.svg" alt="Goal"><p class="t-caption">goal</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/graph.svg" alt="Graph"><p class="t-caption">graph</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/infinity.svg" alt="Infinity"><p class="t-caption">infinity</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/innovation.svg" alt="Innovation"><p class="t-caption">innovation</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/salmon-factory.svg" alt="Salmon factory"><p class="t-caption">salmon-factory</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/service-boat.svg" alt="Service boat"><p class="t-caption">service-boat</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/smolt.svg" alt="Smolt"><p class="t-caption">smolt</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/technology.svg" alt="Technology"><p class="t-caption">technology</p></div>
+            <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/wellboat.svg" alt="Wellboat"><p class="t-caption">wellboat</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout--note mt5"><p class="t-body-s">The files were renamed from the agency's Norwegian originals — <code>Havbruk</code> → <code>aquaculture</code>, <code>Settefisk</code> → <code>smolt</code>, <code>Brønnebåt</code> → <code>wellboat</code>, and so on. The full mapping lives in <a href="../../../brand/assets/icons/README.md"><code>brand/assets/icons/README.md</code></a>.</p></div>
+    </section>
+
+    <section class="section" id="variants">
+      <p class="t-eyebrow">02 · Colour variants</p>
+      <h2 class="t-h2">Four colours, one geometry</h2>
+      <p class="t-lead">Every icon exists in four fills, one folder per variant. The geometry is identical — pick the variant by the surface it sits on, never by mood.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live · aquaculture in all four</div>
+        <div class="demo__stage" style="display:flex; flex-wrap:wrap; gap:var(--sp-4);">
+          <div class="icon-tile"><img src="../../../brand/assets/icons/blue-deep/aquaculture.svg" alt="Blue-deep variant"><p class="t-caption">blue-deep</p></div>
+          <div class="icon-tile"><img src="../../../brand/assets/icons/blue-bright/aquaculture.svg" alt="Blue-bright variant"><p class="t-caption">blue-bright</p></div>
+          <div class="icon-tile"><img src="../../../brand/assets/icons/salmon/aquaculture.svg" alt="Salmon variant"><p class="t-caption">salmon</p></div>
+          <div class="icon-tile" style="background:var(--navy); border-color:var(--navy);"><img src="../../../brand/assets/icons/white/aquaculture.svg" alt="White variant"><p class="t-caption" style="color:var(--on-navy-2);">white</p></div>
+        </div>
+      </div>
+      <div style="overflow-x:auto;" class="mt5">
+        <table class="table">
+          <thead><tr><th>Folder</th><th>Fill</th><th>Token</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td><code>blue-deep/</code></td><td><code>#1F295C</code></td><td><code>--blue-deep</code></td><td>The default on light surfaces.</td></tr>
+            <tr><td><code>blue-bright/</code></td><td><code>#3E7DEE</code></td><td><code>--blue-bright</code></td><td>A lighter accent on light surfaces.</td></tr>
+            <tr><td><code>salmon/</code></td><td><code>#F06848</code></td><td><code>--salmon</code></td><td>Emphasis — salmon is scarce, so at most one per view.</td></tr>
+            <tr><td><code>white/</code></td><td><code>#FFFFFF</code></td><td><code>--white</code></td><td>On navy heroes and dark panels.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="usage">
+      <p class="t-eyebrow">03 · Using them</p>
+      <h2 class="t-h2">Embed as an image, size with width</h2>
+      <p class="t-body">Reference the SVG file directly — no sprite sheet, no inlining needed. The square viewBox means <code>width</code> alone keeps the proportions. Always give an <code>alt</code> that names the concept, not the file.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live · inline with text</div>
+        <div class="demo__stage" style="display:flex; align-items:center; gap:var(--sp-3);">
+          <img src="../../../brand/assets/icons/blue-deep/wellboat.svg" alt="Wellboat" width="32" height="32">
+          <p class="t-body" style="margin:0;">Wellboat transport between site and factory</p>
+        </div>
+        <pre class="demo__code">&lt;img src="brand/assets/icons/blue-deep/wellboat.svg"
+     alt="Wellboat" width="32" height="32"&gt;</pre>
+      </div>
+      <div class="callout callout--warning mt5"><p class="t-body-s"><strong>Don't recolour by hand.</strong> The four variants are the palette. If a new colour is ever needed, copy a variant and change the single <code>fill</code> in its <code>&lt;style&gt;</code> block — never edit paths, and never introduce hex values outside the brand tokens.</p></div>
+    </section>
+
+    <footer class="footer" style="margin-top:var(--sp-7);">
+      <p>Sinkaberg docs kit · <a href="../style-guide.html">back to the style guide</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flow & structure — Sinkaberg docs kit</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow"><a href="../index.html">Docs</a> · <a href="../style-guide.html">Style guide</a> · Elements</p>
+    <h1 class="t-h1">Flow &amp; structure</h1>
+    <p class="t-lead">Sequence, time and arrangement — numbered steps, a pipeline, switchable tabs, a changelog timeline, card grids, and the SVG diagram vocabulary for architecture figures.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">On this page</p>
+    <ol>
+      <li><a href="#steps">Numbered steps</a></li>
+      <li><a href="#pipe">Pipeline</a></li>
+      <li><a href="#tabs">Tabs</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#cards">Cards &amp; grid</a></li>
+      <li><a href="#diagram">Diagram vocabulary</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="steps">
+      <p class="t-eyebrow">01 · Ordered procedure</p>
+      <h2 class="t-h2">Numbered steps</h2>
+      <p class="t-lead">An <code>.steps</code> ordered list auto-numbers each item in a navy disc — for a procedure where order is the point.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <ol class="steps">
+            <li><p class="t-body"><strong>Threshold crossed.</strong> A reading from «Måkeholmen» breaches its configured limit — oxygen below the floor, or temperature above the ceiling.</p></li>
+            <li><p class="t-body"><strong>Confirm window.</strong> «Strømvarsel» waits for the next reading before acting, so a single spike never pages anyone.</p></li>
+            <li><p class="t-body"><strong>Notify on-call.</strong> «Vaktlista» resolves who holds the watch and sends the alert.</p></li>
+            <li><p class="t-body"><strong>Log the event.</strong> The alert and its readings land in «Bøyeloggen» for the morning review.</p></li>
+          </ol>
+        </div>
+        <pre class="demo__code">&lt;ol class="steps"&gt;
+  &lt;li&gt;&lt;p class="t-body"&gt;&lt;strong&gt;Threshold crossed.&lt;/strong&gt; …&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="pipe">
+      <p class="t-eyebrow">02 · Linear flow</p>
+      <h2 class="t-h2">Pipeline</h2>
+      <p class="t-body">A horizontal <code>.pipe</code> of <code>.step</code> chips, joined by salmon chevrons — for a short left-to-right process that fits on one line.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="pipe">
+            <div class="step">Sense</div>
+            <div class="step">Buffer at site</div>
+            <div class="step">Forward</div>
+            <div class="step">Store in hub</div>
+            <div class="step">Alert</div>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="pipe"&gt;
+  &lt;div class="step"&gt;Sense&lt;/div&gt;
+  &lt;div class="step"&gt;Buffer at site&lt;/div&gt;…
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="tabs">
+      <p class="t-eyebrow">03 · Switchable views</p>
+      <h2 class="t-h2">Tabs</h2>
+      <p class="t-lead">One region, several panels. Good for showing the same sensor id rendered per surface, or a snippet in several languages. Keyboard-navigable; falls back to stacked panels without JS.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="tabs" data-tabs>
+            <div class="tabs__list">
+              <button class="tabs__tab" data-tab="dash">Dashboard</button>
+              <button class="tabs__tab" data-tab="api">API</button>
+              <button class="tabs__tab" data-tab="export">Export</button>
+            </div>
+            <div class="tabs__panel" data-panel="dash">
+              <p class="t-body-s" style="margin:0;">Resolved to a path inside the dashboard's site view:</p>
+              <pre class="code mt3"><code>/sites/maakeholmen/sensors/temp-03</code></pre>
+            </div>
+            <div class="tabs__panel" data-panel="api">
+              <p class="t-body-s" style="margin:0;">Rewritten to the hub API URL for a client fetching readings:</p>
+              <pre class="code mt3"><code>hub.example/api/v1/readings/maakeholmen/temp-03</code></pre>
+            </div>
+            <div class="tabs__panel" data-panel="export">
+              <p class="t-body-s" style="margin:0;">Flattened to an in-document anchor in the daily export:</p>
+              <pre class="code mt3"><code>#sensor-maakeholmen-temp-03</code></pre>
+            </div>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="tabs" data-tabs&gt;
+  &lt;div class="tabs__list"&gt;
+    &lt;button class="tabs__tab" data-tab="dash"&gt;Dashboard&lt;/button&gt;…
+  &lt;/div&gt;
+  &lt;div class="tabs__panel" data-panel="dash"&gt; … &lt;/div&gt;…
+&lt;/div&gt;
+&lt;!-- needs sinkaberg-docs.js --&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="timeline">
+      <p class="t-eyebrow">04 · Over time</p>
+      <h2 class="t-h2">Timeline / changelog</h2>
+      <p class="t-body">A vertical <code>.timeline</code> for a document's history or a project's milestones. Mark nodes <code>.is-done</code> (filled green) or <code>.is-current</code> (salmon ring).</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <ul class="timeline">
+            <li class="is-done">
+              <div class="tl-meta"><span class="tl-date">2024-04-28</span><span class="tl-title">First sensors online</span></div>
+              <p class="t-body-s" style="margin:0;">«Måkeholmen» reports temperature and oxygen, but a link outage drops <code>strm-02</code> and <code>kam-01</code> for an afternoon.</p>
+            </li>
+            <li class="is-done">
+              <div class="tl-meta"><span class="tl-date">2024-05-12</span><span class="tl-title">Design session</span></div>
+              <p class="t-body-s" style="margin:0;">Reframed around store-and-forward: the gateway buffers locally and the hub catches up.</p>
+            </li>
+            <li class="is-current">
+              <div class="tl-meta"><span class="tl-date">2024-05-19</span><span class="tl-title">ADR proposed</span> <span class="status status--proposed">Proposed</span></div>
+              <p class="t-body-s" style="margin:0;">Decision record opened as <code>0042-buffer-at-the-edge.md</code>; discussion on issue #7.</p>
+            </li>
+            <li>
+              <div class="tl-meta"><span class="tl-date">next</span><span class="tl-title">Second site</span></div>
+              <p class="t-body-s" style="margin:0;">«Ternebåen» joins to exercise multi-site dashboards — still open.</p>
+            </li>
+          </ul>
+        </div>
+        <pre class="demo__code">&lt;ul class="timeline"&gt;
+  &lt;li class="is-done"&gt;
+    &lt;div class="tl-meta"&gt;&lt;span class="tl-date"&gt;2024-05-12&lt;/span&gt;&lt;span class="tl-title"&gt;Design session&lt;/span&gt;&lt;/div&gt;
+    &lt;p class="t-body-s"&gt;…&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li class="is-current"&gt;…&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="cards">
+      <p class="t-eyebrow">05 · Arrangement</p>
+      <h2 class="t-h2">Cards, grid &amp; columns</h2>
+      <p class="t-body">A <code>.card</code> is the salmon-topped container. Drop several into an auto-fitting <code>.grid</code>, or split two peers with <code>.cols</code>.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live · grid of cards</div>
+        <div class="demo__stage">
+          <div class="grid">
+            <div class="card">
+              <p class="t-eyebrow" style="color:var(--ink-3);">On the dashboard</p>
+              <p class="t-body-s" style="margin-top:var(--sp-2);"><code>/sites/maakeholmen/…/temp-03</code></p>
+            </div>
+            <div class="card">
+              <p class="t-eyebrow" style="color:var(--ink-3);">Via the API</p>
+              <p class="t-body-s" style="margin-top:var(--sp-2);"><code>hub.example/…/temp-03</code></p>
+            </div>
+            <div class="card">
+              <p class="t-eyebrow" style="color:var(--ink-3);">In the export</p>
+              <p class="t-body-s" style="margin-top:var(--sp-2);"><code>#sensor-maakeholmen-temp-03</code></p>
+            </div>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="grid"&gt;
+  &lt;div class="card"&gt; … &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- or two peers: &lt;div class="cols"&gt; … &lt;/div&gt; --&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="diagram">
+      <p class="t-eyebrow">06 · Architecture figures</p>
+      <h2 class="t-h2">Diagram vocabulary</h2>
+      <p class="t-lead">Hand-authored SVG using the <code>.dg-*</code> classes so every diagram shares the brand's nodes, edges and salmon emphasis. Wrap it in a <code>.card</code> figure with a legend and caption.</p>
+      <figure class="card mt5" style="margin:var(--sp-5) 0 0;">
+        <svg class="dg" viewBox="0 0 760 300" role="img" aria-label="Four sensors on one sea site converge on a single site gateway.">
+          <defs>
+            <marker id="dg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrowhead" d="M0,0 L10,5 L0,10 z"/></marker>
+            <marker id="dg-arrow-salmon" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="dg-arrowhead--salmon" d="M0,0 L10,5 L0,10 z"/></marker>
+          </defs>
+          <path class="dg-edge" d="M110,88 C110,150 380,150 380,204"/>
+          <path class="dg-edge" d="M290,88 C290,140 380,150 380,204"/>
+          <path class="dg-edge" d="M470,88 C470,140 380,150 380,204"/>
+          <path class="dg-edge" d="M650,88 C650,150 380,150 380,204"/>
+          <g><rect class="dg-node" x="30" y="24" width="160" height="64" rx="12"/><text class="dg-label" x="110" y="52" text-anchor="middle">Temperatur</text><text class="dg-sub" x="110" y="72" text-anchor="middle">temp-03</text></g>
+          <g><rect class="dg-node" x="210" y="24" width="160" height="64" rx="12"/><text class="dg-label" x="290" y="52" text-anchor="middle">Oksygen</text><text class="dg-sub" x="290" y="72" text-anchor="middle">oks-01</text></g>
+          <g><rect class="dg-node" x="390" y="24" width="160" height="64" rx="12"/><text class="dg-label" x="470" y="52" text-anchor="middle">Strøm</text><text class="dg-sub" x="470" y="72" text-anchor="middle">strm-02</text></g>
+          <g><rect class="dg-node" x="570" y="24" width="160" height="64" rx="12"/><text class="dg-label" x="650" y="52" text-anchor="middle">Kamera</text><text class="dg-sub" x="650" y="72" text-anchor="middle">kam-01</text></g>
+          <g><rect class="dg-node dg-node--navy" x="230" y="204" width="300" height="80" rx="12"/><text class="dg-label dg-label--on-navy" x="380" y="236" text-anchor="middle" style="font-size:16px;">Sitegateway Måkeholmen</text><text class="dg-label--salmon" x="380" y="258" text-anchor="middle">maakeholmen/gw-01 · alias «MH»</text></g>
+        </svg>
+        <div class="dg-legend" aria-hidden="true">
+          <span><i class="dg-swatch--node"></i> Sensor</span>
+          <span><i class="dg-swatch--navy"></i> Site gateway</span>
+          <span><i class="dg-swatch--salmon"></i> Salmon marks the role</span>
+        </div>
+        <figcaption class="figcap">Node classes: <code>.dg-node</code>, <code>.dg-node--navy</code>, <code>.dg-node--ice</code>. Edges: <code>.dg-edge</code>, <code>--dashed</code>, <code>--emphasis</code>. Labels: <code>.dg-label</code>, <code>--on-navy</code>, <code>--salmon</code>.</figcaption>
+      </figure>
+      <div class="callout callout--info mt5"><p class="t-body-s">Define the two <code>&lt;marker&gt;</code> arrowheads once inside the SVG's <code>&lt;defs&gt;</code>; the edge classes reference them by id.</p></div>
+    </section>
+
+    <footer class="footer" style="margin-top:var(--sp-7);">
+      <p>Sinkaberg docs kit · <a href="../style-guide.html">back to the style guide</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

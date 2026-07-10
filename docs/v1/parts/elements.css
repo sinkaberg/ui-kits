@@ -1,0 +1,113 @@
+/* --- salmon-scarce highlight for one word of running prose --- */
+.hl { color: var(--salmon-600); font-weight: 600; }
+
+/* --- lead-in mark / pull quote --- */
+.quote { margin: 0; padding: var(--sp-4) 0 var(--sp-4) var(--sp-5); border-left: 3px solid var(--salmon); }
+.quote p { font-family: var(--font-display); font-weight: 500; font-size: var(--fs-h5); line-height: 1.35; color: var(--fg-1); margin: 0; letter-spacing: -0.01em; }
+.quote cite { display: block; margin-top: var(--sp-3); font-style: normal; font-family: var(--font-body); font-size: var(--fs-body-s); color: var(--fg-3); }
+.quote cite::before { content: "— "; }
+
+/* --- definition list / glossary --- */
+.dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: var(--sp-3) var(--sp-6); align-items: baseline; }
+.dl dt { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body-s); color: var(--fg-1); }
+.dl dd { margin: 0; font-family: var(--font-body); font-size: var(--fs-body-s); line-height: 1.55; color: var(--fg-2); }
+.dl dt + dt { margin-top: 0; }
+@media (max-width: 560px) { .dl { grid-template-columns: 1fr; gap: var(--sp-1) 0; } .dl dd { margin-bottom: var(--sp-3); } }
+/* glossary variant: separated rows, term over definition */
+.glossary { display: grid; gap: 0; grid-template-columns: 1fr; }
+.glossary > div { display: grid; grid-template-columns: 220px 1fr; gap: var(--sp-4) var(--sp-6); padding: var(--sp-4) 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body); color: var(--fg-1); margin: 0; }
+.glossary dd { margin: 0; font-size: var(--fs-body-s); line-height: 1.55; color: var(--fg-2); }
+.glossary .gloss-aka { display: block; margin-top: 2px; font-family: var(--font-mono); font-size: var(--fs-caption); color: var(--ink-3); }
+@media (max-width: 560px) { .glossary > div { grid-template-columns: 1fr; gap: var(--sp-1); } }
+
+/* --- key–value spec table (label / value pairs, no header row) --- */
+.spec { width: 100%; border-collapse: collapse; font-size: var(--fs-body-s); }
+.spec th, .spec td { padding: var(--sp-3) var(--sp-4); text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.spec th { width: 34%; font-family: var(--font-display); font-weight: 600; color: var(--fg-1); font-size: var(--fs-body-s); }
+.spec td { font-family: var(--font-body); color: var(--fg-2); }
+.spec tr:last-child th, .spec tr:last-child td { border-bottom: 0; }
+.spec--boxed { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; }
+.spec--boxed th { background: var(--bg-2); border-right: 1px solid var(--line); }
+
+/* --- comparison: do / don't (or this vs that) --- */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); }
+@media (max-width: 640px) { .compare { grid-template-columns: 1fr; } }
+.compare-col { border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--sp-5); background: var(--bg-1); }
+.compare-col > header { display: flex; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-3); font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body); }
+.compare-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-3); }
+.compare-col li { position: relative; padding-left: var(--sp-6); font-size: var(--fs-body-s); line-height: 1.5; color: var(--fg-2); }
+.compare-col li::before { position: absolute; left: 0; top: 0; width: 22px; text-align: center; font-weight: 700; font-family: var(--font-body); }
+.compare-col .cc-icon { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: var(--r-pill); font-size: 14px; font-weight: 700; }
+.compare--do { border-top: 3px solid var(--success); }
+.compare--do .cc-icon { background: color-mix(in srgb, var(--success) 15%, var(--bg-1)); color: var(--success); }
+.compare--do li::before { content: "✓"; color: var(--success); }
+.compare--dont { border-top: 3px solid var(--danger); }
+.compare--dont .cc-icon { background: color-mix(in srgb, var(--danger) 13%, var(--bg-1)); color: var(--danger); }
+.compare--dont li::before { content: "✕"; color: var(--danger); }
+
+/* --- tabs / switchable panels (progressive: works as headings if JS off) --- */
+.tabs { border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; background: var(--bg-1); }
+.tabs__list { display: flex; flex-wrap: wrap; gap: 0; background: var(--bg-2); border-bottom: 1px solid var(--line); }
+.tabs__tab { appearance: none; border: 0; background: none; cursor: pointer; padding: var(--sp-3) var(--sp-5); font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body-s); color: var(--fg-3); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease); }
+.tabs__tab:hover { color: var(--fg-1); }
+.tabs__tab[aria-selected="true"] { color: var(--fg-1); border-bottom-color: var(--salmon); background: var(--bg-1); }
+.tabs__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.tabs__panel { padding: var(--sp-5); }
+.tabs__panel[hidden] { display: none; }
+.tabs__panel > :first-child { margin-top: 0; }
+.tabs__panel > :last-child { margin-bottom: 0; }
+
+/* --- timeline / changelog --- */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-5); position: relative; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.timeline > li { position: relative; padding-left: var(--sp-7); }
+.timeline > li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: var(--r-pill); background: var(--bg-1); border: 3px solid var(--line-strong); box-shadow: 0 0 0 3px var(--bg-2); }
+.timeline > li.is-current::before { border-color: var(--salmon); }
+.timeline > li.is-done::before { border-color: var(--success); background: var(--success); }
+.tl-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-2) var(--sp-3); margin-bottom: var(--sp-1); }
+.tl-date { font-family: var(--font-mono); font-size: var(--fs-caption); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.tl-title { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body); color: var(--fg-1); }
+
+/* --- annotated code: filename tab + line highlights --- */
+.codeblock { border-radius: var(--r-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+.codeblock__bar { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-2) var(--sp-4); background: var(--navy-700); border-bottom: 1px solid var(--navy-line); }
+.codeblock__name { font-family: var(--font-mono); font-size: var(--fs-caption); color: var(--on-navy-2); }
+.codeblock__lang { margin-left: auto; font-family: var(--font-display); font-weight: 600; font-size: var(--fs-eyebrow); letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-navy-3); }
+.codeblock pre { margin: 0; background: var(--navy); color: var(--on-navy-1); font-size: var(--fs-body-s); line-height: 1.7; overflow-x: auto; }
+.codeblock .ln { display: block; padding: 0 var(--sp-5); border-left: 3px solid transparent; }
+.codeblock .ln--hl { background: var(--navy-fill); border-left-color: var(--salmon); }
+.codeblock .ln--add { background: color-mix(in srgb, var(--success) 22%, transparent); border-left-color: var(--success); }
+.codeblock .ln--del { background: color-mix(in srgb, var(--danger) 20%, transparent); border-left-color: var(--danger); }
+.codeblock .cmt { color: var(--on-navy-3); }
+
+/* --- file / repo tree --- */
+.tree { margin: 0; padding: var(--sp-4) var(--sp-5); font-family: var(--font-mono); font-size: var(--fs-body-s); line-height: 1.7; color: var(--fg-2); background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--r-md); overflow-x: auto; }
+.tree ul { list-style: none; margin: 0; padding-left: 1.25em; border-left: 1px solid var(--line); }
+.tree > ul { padding-left: 0; border-left: 0; }
+.tree li { position: relative; }
+.tree .dir { color: var(--fg-1); font-weight: 600; }
+.tree .dir::before { content: "▸ "; color: var(--ink-3); }
+.tree .file::before { content: "  "; }
+.tree .anno { color: var(--ink-3); font-family: var(--font-body); }
+.tree .anno::before { content: " — "; }
+.tree .t-mark { color: var(--salmon-600); }
+
+/* --- footnotes / references --- */
+.fnref { font-size: 0.72em; vertical-align: super; line-height: 0; font-family: var(--font-body); font-weight: 600; padding: 0 0.15em; }
+.fnref a { text-decoration: none; }
+.footnotes { margin-top: var(--sp-6); padding-top: var(--sp-4); border-top: 1px solid var(--line); }
+.footnotes ol { margin: 0; padding-left: var(--sp-5); display: grid; gap: var(--sp-2); }
+.footnotes li { font-size: var(--fs-body-s); line-height: 1.5; color: var(--fg-3); }
+.footnotes li:target { background: color-mix(in srgb, var(--salmon) 12%, transparent); border-radius: var(--r-xs); }
+.footnotes .fn-back { text-decoration: none; margin-left: 0.3em; }
+
+/* --- meta row (status · tags · dates), used in doc headers --- */
+.metarow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); }
+.status { display: inline-flex; align-items: center; gap: var(--sp-2); font-family: var(--font-display); font-weight: 600; font-size: var(--fs-eyebrow); letter-spacing: 0.04em; text-transform: uppercase; padding: var(--sp-1) var(--sp-3); border-radius: var(--r-pill); }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: var(--r-pill); background: currentColor; }
+.status--draft    { color: var(--ink-3);     background: color-mix(in srgb, var(--ink-3) 12%, var(--bg-1)); }
+.status--proposed { color: var(--warning);   background: color-mix(in srgb, var(--warning) 14%, var(--bg-1)); }
+.status--accepted { color: var(--success);   background: color-mix(in srgb, var(--success) 14%, var(--bg-1)); }
+.status--deprecated { color: var(--danger);  background: color-mix(in srgb, var(--danger) 12%, var(--bg-1)); }
+.hero .status { background: var(--navy-fill); }

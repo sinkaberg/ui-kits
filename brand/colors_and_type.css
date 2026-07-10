@@ -1,0 +1,82 @@
+:root {
+  --blue-deep:   #1F295C;
+  --blue:        #023493;
+  --blue-bright: #3E7DEE;
+  --navy:        #00143C;
+  --ice:         #E2ECFC;
+  --salmon:      #F06848;
+  --salmon-light:#FAD2C8;
+  --navy-700:    #0B1E4D;
+  --navy-600:    #1F295C;
+  --indigo:      #222D66;
+  --salmon-600:  #DA5635;
+  --coral:       var(--salmon);
+  --coral-600:   var(--salmon-600);
+  --black:       #0A0E16;
+  --white:       #FFFFFF;
+  --paper:       #F6F8FC;
+  --mist:        #EAEFF7;
+  --line:        #D7DEEA;
+  --line-strong: #B9C4D6;
+  --ink-2:       #45506A;
+  --ink-3:       #6B7790;
+  --on-navy-1:   #FFFFFF;
+  --on-navy-2:   #B9C6E0;
+  --on-navy-3:   #7E8FB5;
+  --navy-line:   rgba(255,255,255,0.16);
+  --navy-fill:   rgba(255,255,255,0.06);
+  --fg-1: var(--navy);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
+  --bg-1: var(--white);
+  --bg-2: var(--paper);
+  --bg-3: var(--mist);
+  --accent: var(--coral);
+  --focus: #2F6BFF;
+  --success: #1E7A52;
+  --warning: #B07A12;
+  --danger:  #C0382B;
+  --font-display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --font-body:    "Inter", Arial, system-ui, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --fs-eyebrow: 0.8125rem;
+  --fs-caption: 0.875rem;
+  --fs-body-s:  0.9375rem;
+  --fs-body:    1.0625rem;
+  --fs-body-l:  1.1875rem;
+  --fs-h6: 1.125rem;
+  --fs-h5: 1.375rem;
+  --fs-h4: 1.75rem;
+  --fs-h3: 2.25rem;
+  --fs-h2: 3rem;
+  --fs-h1: 4rem;
+  --fs-display: 5.5rem;
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 96px; --sp-10: 128px;
+  --shadow-sm: 0 1px 2px rgba(0,20,60,0.06), 0 1px 3px rgba(0,20,60,0.08);
+  --shadow-md: 0 4px 16px rgba(0,20,60,0.08), 0 2px 6px rgba(0,20,60,0.06);
+  --shadow-lg: 0 18px 48px rgba(0,20,60,0.14), 0 6px 16px rgba(0,20,60,0.08);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 220ms;
+}
+.t-display { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-display); line-height: 0.98; letter-spacing: -0.02em; color: var(--fg-1); text-wrap: balance; }
+.t-h1 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h1); line-height: 1.02; letter-spacing: -0.02em; color: var(--fg-1); text-wrap: balance; }
+.t-h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h2); line-height: 1.06; letter-spacing: -0.018em; color: var(--fg-1); text-wrap: balance; }
+.t-h3 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h3); line-height: 1.1;  letter-spacing: -0.014em; color: var(--fg-1); }
+.t-h4 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h4); line-height: 1.18; letter-spacing: -0.01em;  color: var(--fg-1); }
+.t-h5 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h5); line-height: 1.25; color: var(--fg-1); }
+.t-h6 { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h6); line-height: 1.3;  color: var(--fg-1); }
+.t-eyebrow { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-eyebrow); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.t-lead { font-family: var(--font-body); font-weight: 400; font-size: var(--fs-body-l); line-height: 1.55; color: var(--fg-2); }
+.t-body { font-family: var(--font-body); font-weight: 400; font-size: var(--fs-body); line-height: 1.62; color: var(--fg-2); }
+.t-body-s { font-family: var(--font-body); font-weight: 400; font-size: var(--fs-body-s); line-height: 1.55; color: var(--fg-2); }
+.t-caption { font-family: var(--font-body); font-weight: 500; font-size: var(--fs-caption); line-height: 1.4; color: var(--fg-3); }
+a { color: var(--navy-600); text-underline-offset: 0.18em; }
+a:hover { color: var(--salmon-600); }

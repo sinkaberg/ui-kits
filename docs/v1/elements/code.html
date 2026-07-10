@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code & trees — Sinkaberg docs kit</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow"><a href="../index.html">Docs</a> · <a href="../style-guide.html">Style guide</a> · Elements</p>
+    <h1 class="t-h1">Code &amp; trees</h1>
+    <p class="t-lead">From a one-line token to an annotated file with highlighted lines, plus the repo tree for showing structure. All on the deep-navy code surface.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">On this page</p>
+    <ol>
+      <li><a href="#plain">Plain block</a></li>
+      <li><a href="#annotated">Annotated code</a></li>
+      <li><a href="#diff">Diff lines</a></li>
+      <li><a href="#tree">Repo tree</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="plain">
+      <p class="t-eyebrow">01 · The basics</p>
+      <h2 class="t-h2">Plain code block</h2>
+      <p class="t-body">A <code>.code</code> block is a bare navy panel — good for a stored address, a shell line, or an ASCII sketch. Inline <code>&lt;code&gt;</code> handles single tokens in prose.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <pre class="code"><code>sensor id: maakeholmen/temp-03
+           └─────────┘ └─────┘
+           site slug    sensor (type + number)</code></pre>
+        </div>
+        <pre class="demo__code">&lt;pre class="code"&gt;&lt;code&gt;sensor id: maakeholmen/temp-03&lt;/code&gt;&lt;/pre&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="annotated">
+      <p class="t-eyebrow">02 · With context</p>
+      <h2 class="t-h2">Annotated code — filename &amp; highlights</h2>
+      <p class="t-lead">A titled bar names the file and language; wrap each line in <code>.ln</code> and add <code>.ln--hl</code> to draw the eye to what matters.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="codeblock">
+            <div class="codeblock__bar">
+              <span class="codeblock__name">maakeholmen/temp-03.md</span>
+              <span class="codeblock__lang">yaml</span>
+            </div>
+            <pre><code><span class="ln">---</span><span class="ln">type: sensor</span><span class="ln ln--hl">id: maakeholmen/temp-03</span><span class="ln ln--hl">aliases: [MH-T3]</span><span class="ln">site: maakeholmen</span><span class="ln cmt"># registered before the first reading arrives</span><span class="ln">---</span></code></pre>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="codeblock"&gt;
+  &lt;div class="codeblock__bar"&gt;
+    &lt;span class="codeblock__name"&gt;path/to/file.md&lt;/span&gt;
+    &lt;span class="codeblock__lang"&gt;yaml&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;pre&gt;&lt;code&gt;&lt;span class="ln"&gt;---&lt;/span&gt;&lt;span class="ln ln--hl"&gt;id: …&lt;/span&gt;…&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</pre>
+      </div>
+      <div class="callout callout--note mt5"><p class="t-body-s">Keep each <code>.ln</code> on one source line with no whitespace between spans — the block preserves newlines, so stray gaps become blank rows.</p></div>
+    </section>
+
+    <section class="section" id="diff">
+      <p class="t-eyebrow">03 · Changes</p>
+      <h2 class="t-h2">Added &amp; removed lines</h2>
+      <p class="t-body">For a changelog entry or a review, <code>.ln--add</code> and <code>.ln--del</code> tint lines green and red — a lightweight diff without a full syntax pipeline.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="codeblock">
+            <div class="codeblock__bar">
+              <span class="codeblock__name">stromvarsel/alert-rules.yml</span>
+              <span class="codeblock__lang">diff</span>
+            </div>
+            <pre><code><span class="ln">## Varsling</span><span class="ln ln--del">- Ring vakta manuelt (gammel rutine)</span><span class="ln ln--add">- varsle: vaktlista/maakeholmen</span><span class="ln ln--add">- varsle: vaktlista/ternebaaen</span><span class="ln">## Ansvar</span></code></pre>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;span class="ln ln--del"&gt;- old line&lt;/span&gt;
+&lt;span class="ln ln--add"&gt;+ new line&lt;/span&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="tree">
+      <p class="t-eyebrow">04 · Structure</p>
+      <h2 class="t-h2">Repo / file tree</h2>
+      <p class="t-lead">Show how the telemetry-docs repo is laid out on disk. Directories get a marker and bold; files can carry a muted annotation, and <code>.t-mark</code> flags the one path you're pointing at.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="tree">
+            <ul>
+              <li><span class="dir">maakeholmen/</span><span class="anno">a sea site — own gateway, own buffer</span>
+                <ul>
+                  <li><span class="file">temp-03.md</span><span class="anno">sensor record</span></li>
+                  <li><span class="file">oksygen-01.md</span></li>
+                </ul>
+              </li>
+              <li><span class="dir">hub/</span><span class="anno">the central layer</span>
+                <ul>
+                  <li><span class="dir">sites/</span>
+                    <ul>
+                      <li><span class="file t-mark">maakeholmen.md</span><span class="anno">site record · «MH»</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><span class="dir">docs/</span>
+                <ul>
+                  <li><span class="file">adr/0042-store-and-forward.md</span></li>
+                  <li><span class="file">architecture/glossary.md</span></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="tree"&gt;&lt;ul&gt;
+  &lt;li&gt;&lt;span class="dir"&gt;hub/&lt;/span&gt;&lt;span class="anno"&gt;central layer&lt;/span&gt;
+    &lt;ul&gt;&lt;li&gt;&lt;span class="file t-mark"&gt;maakeholmen.md&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <footer class="footer" style="margin-top:var(--sp-7);">
+      <p>Sinkaberg docs kit · <a href="../style-guide.html">back to the style guide</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

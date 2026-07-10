@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text & typography — Sinkaberg docs kit</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow"><a href="../index.html">Docs</a> · <a href="../style-guide.html">Style guide</a> · Elements</p>
+    <h1 class="t-h1">Text &amp; typography</h1>
+    <p class="t-lead">The type scale, running-prose accents, quotes, keyboard keys and footnotes. Everything here is a class from <code>sinkaberg-docs.css</code> — copy the markup, keep the class.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">On this page</p>
+    <ol>
+      <li><a href="#scale">Type scale</a></li>
+      <li><a href="#eyebrow">Eyebrow &amp; lead</a></li>
+      <li><a href="#prose">Prose &amp; highlight</a></li>
+      <li><a href="#quote">Pull quote</a></li>
+      <li><a href="#inline">Inline code &amp; keys</a></li>
+      <li><a href="#footnotes">Footnotes</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="scale">
+      <p class="t-eyebrow">01 · Headings</p>
+      <h2 class="t-h2">One display face, one scale</h2>
+      <p class="t-body">Sora carries every heading; Inter carries body. Inside <code>.doc</code> the headings step down one notch so a document doesn't shout. Use one <code>.t-h1</code> per page, then nest by meaning — never skip for size.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live · the scale</div>
+        <div class="demo__stage">
+          <p class="t-display" style="margin:0 0 var(--sp-3);">Display</p>
+          <p class="t-h1" style="margin:0 0 var(--sp-2);">Heading 1</p>
+          <p class="t-h2" style="margin:0 0 var(--sp-2);">Heading 2</p>
+          <p class="t-h3" style="margin:0 0 var(--sp-2);">Heading 3</p>
+          <p class="t-h4" style="margin:0 0 var(--sp-2);">Heading 4</p>
+          <p class="t-h5" style="margin:0 0 var(--sp-2);">Heading 5</p>
+          <p class="t-h6" style="margin:0;">Heading 6</p>
+        </div>
+        <pre class="demo__code">&lt;h2 class="t-h2"&gt;Heading&lt;/h2&gt;   &lt;!-- steps down inside .doc --&gt;
+&lt;p class="t-body"&gt;Body copy in Inter, ~68ch max measure.&lt;/p&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="eyebrow">
+      <p class="t-eyebrow">02 · Section furniture</p>
+      <h2 class="t-h2">Eyebrow, lead and body</h2>
+      <p class="t-body">Each section opens with an <code>.t-eyebrow</code> — a numbered, salmon, all-caps kicker — then a heading, then a single <code>.t-lead</code> sentence that states the point. Body text follows.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <p class="t-eyebrow">04 · How a reading travels</p>
+          <h3 class="t-h3" style="margin-top:var(--sp-1);">Buffer first, forward later</h3>
+          <p class="t-lead">A single lead sentence sets up the section in the reader's language.</p>
+          <p class="t-body">Body copy expands with the detail. Keep the measure narrow — the kit caps section prose at 68 characters so lines stay readable.</p>
+          <p class="t-caption mt3">Caption / metadata sits quietly beneath, in the muted ink.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prose">
+      <p class="t-eyebrow">03 · Emphasis</p>
+      <h2 class="t-h2">Highlight one thing, not ten</h2>
+      <p class="t-lead">Salmon is scarce on purpose. In running prose, reach for <code>.hl</code> at most once or twice a page.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <p class="t-body" style="max-width:62ch;">This is not a fleet of isolated loggers. It is <span class="hl">one telemetry stream</span>, composed of independently-buffered sites — and that reframe changes every decision that follows.</p>
+        </div>
+        <pre class="demo__code">…it is &lt;span class="hl"&gt;one telemetry stream&lt;/span&gt;, composed of…</pre>
+      </div>
+    </section>
+
+    <section class="section" id="quote">
+      <p class="t-eyebrow">04 · Pull quote</p>
+      <h2 class="t-h2">A line worth stopping on</h2>
+      <p class="t-body">Use <code>.quote</code> to lift a decision, a principle, or a stakeholder's words out of the flow. It sets the text in the display face with a thin salmon rule.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <blockquote class="quote">
+            <p>A reading you never lose is worth more than a dashboard you refresh — buffer first, render later.</p>
+            <cite>Telemetry design review, ADR-0042</cite>
+          </blockquote>
+        </div>
+        <pre class="demo__code">&lt;blockquote class="quote"&gt;
+  &lt;p&gt;A reading you never lose is worth more…&lt;/p&gt;
+  &lt;cite&gt;Telemetry design review&lt;/cite&gt;
+&lt;/blockquote&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="inline">
+      <p class="t-eyebrow">05 · Inline objects</p>
+      <h2 class="t-h2">Code spans and keyboard keys</h2>
+      <p class="t-body">Inline <code>&lt;code&gt;</code> marks a token, path or identifier in flowing text. Wrap key presses in <code>&lt;kbd&gt;</code>.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <p class="t-body">Open <code>docs/adr/0042-store-and-forward.md</code> and press <kbd>⌘</kbd> <kbd>K</kbd> to jump, or <kbd>Ctrl</kbd> <kbd>P</kbd> on Windows.</p>
+        </div>
+        <pre class="demo__code">Open &lt;code&gt;path/to/file.md&lt;/code&gt; and press &lt;kbd&gt;⌘&lt;/kbd&gt; &lt;kbd&gt;K&lt;/kbd&gt;.</pre>
+      </div>
+    </section>
+
+    <section class="section" id="footnotes">
+      <p class="t-eyebrow">06 · References</p>
+      <h2 class="t-h2">Footnotes that link both ways</h2>
+      <p class="t-body">A reference marker <code>.fnref</code> links to a numbered entry in a <code>.footnotes</code> block; each entry links back. The target row highlights when jumped to.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <p class="t-body">The design composes road-tested patterns rather than inventing one<sup class="fnref"><a href="#fn-1" id="ref-1">1</a></sup>, and buffers at the edge so no single uplink is load-bearing<sup class="fnref"><a href="#fn-2" id="ref-2">2</a></sup>.</p>
+          <div class="footnotes">
+            <ol>
+              <li id="fn-1">Store-and-forward — enterpriseintegrationpatterns.com. <a href="#ref-1" class="fn-back" aria-label="Back to reference">↩</a></li>
+              <li id="fn-2">Survive-the-uplink constraint, ADR-0042. <a href="#ref-2" class="fn-back" aria-label="Back to reference">↩</a></li>
+            </ol>
+          </div>
+        </div>
+        <pre class="demo__code">…rather than inventing one&lt;sup class="fnref"&gt;&lt;a href="#fn-1" id="ref-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+
+&lt;div class="footnotes"&gt;&lt;ol&gt;
+  &lt;li id="fn-1"&gt;Store-and-forward… &lt;a href="#ref-1" class="fn-back"&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <footer class="footer" style="margin-top:var(--sp-7);">
+      <p>Sinkaberg docs kit · <a href="../style-guide.html">back to the style guide</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

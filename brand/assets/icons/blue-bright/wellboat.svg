@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="ikoner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3e7dee;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="66.72" y="25.89" width="5.19" height="15.18" transform="translate(-5.53 15.48) rotate(-12.25)"/>
+  <rect class="cls-1" x="13.74" y="34.25" width="5.19" height="19.52" transform="translate(-10.29 5.35) rotate(-14.19)"/>
+  <path class="cls-1" d="M91.33,76.53H1.41v-16.62l57.75-.13,3.39-8.77h18.87l18.07,4.62-8.15,20.9ZM6.59,71.34h81.19l4.74-12.14-11.76-3h-14.66l-3.39,8.76-56.12.13v6.26Z"/>
+  <polygon class="cls-1" points="61.82 54.27 57.56 38.31 87.85 38.31 83.6 54.27 78.58 52.93 81.1 43.49 64.31 43.49 66.83 52.93 61.82 54.27"/>
+  <polygon class="cls-1" points="27.11 62.36 21.93 62.36 21.93 56.2 9.33 56.2 9.33 62.36 4.15 62.36 4.15 51.01 27.11 51.01 27.11 62.36"/>
+  <polygon class="cls-1" points="12.3 53.39 7.11 53.39 7.11 42.12 16.48 42.12 16.48 47.31 12.3 47.31 12.3 53.39"/>
+</svg>

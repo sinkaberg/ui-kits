@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tables & data — Sinkaberg docs kit</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow"><a href="../index.html">Docs</a> · <a href="../style-guide.html">Style guide</a> · Elements</p>
+    <h1 class="t-h1">Tables &amp; data</h1>
+    <p class="t-lead">Four ways to lay facts side by side: the full data table for many rows, the key–value spec table for one thing's attributes, the do/don't comparison for guidance, and definition lists for a glossary.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">On this page</p>
+    <ol>
+      <li><a href="#table">Data table</a></li>
+      <li><a href="#spec">Spec table</a></li>
+      <li><a href="#compare">Do / don't</a></li>
+      <li><a href="#dl">Definition list</a></li>
+      <li><a href="#glossary">Glossary</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="table">
+      <p class="t-eyebrow">01 · Many rows</p>
+      <h2 class="t-h2">The data table</h2>
+      <p class="t-lead">Zebra striping, an uppercase display-face header, and a salmon-free hover. Wrap it in a scroll container so it never overflows the measure on narrow screens.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div style="overflow-x:auto;">
+            <table class="table">
+              <thead><tr><th>Concept</th><th>Pattern · in the ADR</th><th>Platform-native</th><th>User-facing</th></tr></thead>
+              <tbody>
+                <tr><td>edge buffering</td><td>store-and-forward</td><td><strong>gateway buffer</strong></td><td><code>«mellomlager»</code></td></tr>
+                <tr><td>central collection</td><td>mediator</td><td><strong>telemetry hub</strong></td><td>hidden</td></tr>
+                <tr><td>fan-out of readings</td><td>publish–subscribe</td><td><strong>reading feed</strong></td><td>hidden</td></tr>
+                <tr><td>one measurement</td><td>event record</td><td><strong>reading</strong></td><td><code>«måling»</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div style="overflow-x:auto;"&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Concept&lt;/th&gt;…&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;edge buffering&lt;/td&gt;…&lt;/tr&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="spec">
+      <p class="t-eyebrow">02 · One thing's attributes</p>
+      <h2 class="t-h2">Key–value spec table</h2>
+      <p class="t-body">No header row — a left label column and a value column. Perfect for a document's front-matter, an entity's properties, or an endpoint's parameters. Add <code>.spec--boxed</code> for a bordered, filled-label variant.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live · boxed</div>
+        <div class="demo__stage">
+          <table class="spec spec--boxed">
+            <tbody>
+              <tr><th>Sensor id</th><td><code>maakeholmen/temp-03</code></td></tr>
+              <tr><th>Type</th><td><code>temperatur</code> — 5-minute reading interval</td></tr>
+              <tr><th>Aliases</th><td>«MH-T3»</td></tr>
+              <tr><th>Site</th><td>«Måkeholmen» · alias «MH»</td></tr>
+              <tr><th>Owner</th><td>Drift / vedlikehold</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <pre class="demo__code">&lt;table class="spec spec--boxed"&gt;&lt;tbody&gt;
+  &lt;tr&gt;&lt;th&gt;Sensor id&lt;/th&gt;&lt;td&gt;&lt;code&gt;maakeholmen/temp-03&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="compare">
+      <p class="t-eyebrow">03 · Guidance</p>
+      <h2 class="t-h2">Do / don't comparison</h2>
+      <p class="t-lead">Two columns, green ticks against red crosses. Use it to turn a principle into concrete practice — the shape reads faster than a paragraph of prose.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="compare">
+            <div class="compare-col compare--do">
+              <header><span class="cc-icon">✓</span> Do</header>
+              <ul>
+                <li>Buffer readings at the gateway until the hub acknowledges.</li>
+                <li>Address sensors by logical id, never by host.</li>
+                <li>Publish each reading once; let subscribers fan out.</li>
+              </ul>
+            </div>
+            <div class="compare-col compare--dont">
+              <header><span class="cc-icon">✕</span> Don't</header>
+              <ul>
+                <li>Wire every dashboard to every sensor — that's O(n²) and rots fast.</li>
+                <li>Hard-code a gateway's IP into an alert rule.</li>
+                <li>Drop readings when the uplink blips — forward later instead.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="compare"&gt;
+  &lt;div class="compare-col compare--do"&gt;
+    &lt;header&gt;&lt;span class="cc-icon"&gt;✓&lt;/span&gt; Do&lt;/header&gt;
+    &lt;ul&gt;&lt;li&gt;…&lt;/li&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="compare-col compare--dont"&gt;…&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="dl">
+      <p class="t-eyebrow">04 · Term &amp; definition</p>
+      <h2 class="t-h2">Definition list</h2>
+      <p class="t-body">A compact two-column <code>&lt;dl&gt;</code> for short term–definition pairs inside a section. Collapses to stacked rows on narrow screens.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <dl class="dl">
+            <dt>Site gateway</dt><dd>One site's local collection point — buffers readings before forwarding.</dd>
+            <dt>Telemetry hub</dt><dd>The single mediator every gateway forwards to; feeds dashboards and alerts.</dd>
+            <dt>Reading</dt><dd>One timestamped measurement, addressed as <code>&lt;site&gt;/&lt;sensor&gt;</code>, with value and unit.</dd>
+          </dl>
+        </div>
+        <pre class="demo__code">&lt;dl class="dl"&gt;
+  &lt;dt&gt;Site gateway&lt;/dt&gt;&lt;dd&gt;One site's local collection point…&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="glossary">
+      <p class="t-eyebrow">05 · Full glossary</p>
+      <h2 class="t-h2">Glossary rows</h2>
+      <p class="t-body">For a standalone glossary page, <code>.glossary</code> gives each term a full row with an optional mono <em>also-known-as</em> line — more room to breathe than the inline <code>.dl</code>.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <dl class="glossary">
+            <div>
+              <dt>Site gateway<span class="gloss-aka">aka gateway pattern · «mellomlager»</span></dt>
+              <dd>The on-site collection point with its own local buffer, forwarding readings whenever the uplink allows.</dd>
+            </div>
+            <div>
+              <dt>Telemetry hub<span class="gloss-aka">aka mediator</span></dt>
+              <dd>The thin central layer holding one feed per sensor, decoupling sites from consumers.</dd>
+            </div>
+            <div>
+              <dt>Reading<span class="gloss-aka">aka event record</span></dt>
+              <dd>The uniform <code>timestamp · sensor · value</code> shape every measurement carries, so consumers parse one format.</dd>
+            </div>
+          </dl>
+        </div>
+        <pre class="demo__code">&lt;dl class="glossary"&gt;
+  &lt;div&gt;
+    &lt;dt&gt;Site gateway&lt;span class="gloss-aka"&gt;aka gateway pattern&lt;/span&gt;&lt;/dt&gt;
+    &lt;dd&gt;The on-site collection point…&lt;/dd&gt;
+  &lt;/div&gt;
+&lt;/dl&gt;</pre>
+      </div>
+    </section>
+
+    <footer class="footer" style="margin-top:var(--sp-7);">
+      <p>Sinkaberg docs kit · <a href="../style-guide.html">back to the style guide</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

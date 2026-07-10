@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Callouts & status — Sinkaberg docs kit</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow"><a href="../index.html">Docs</a> · <a href="../style-guide.html">Style guide</a> · Elements</p>
+    <h1 class="t-h1">Callouts &amp; status</h1>
+    <p class="t-lead">Ways to flag, label and quantify — admonitions, pills, tags, badges, status chips and the stat block. The load-bearing rule: colour means something, so spend it sparingly.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">On this page</p>
+    <ol>
+      <li><a href="#callouts">Callouts</a></li>
+      <li><a href="#labels">Pills · tags · badges</a></li>
+      <li><a href="#status">Status chips</a></li>
+      <li><a href="#stats">Stat block</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="callouts">
+      <p class="t-eyebrow">01 · Admonitions</p>
+      <h2 class="t-h2">Five callouts, one per intent</h2>
+      <p class="t-lead">Each carries a left rule in its semantic colour and a tinted fill. Pick by meaning, not by mood: note for asides, info for context, success for confirmations, warning for open risks, danger for hard stops.</p>
+
+      <div class="demo mt5">
+        <div class="demo__label">Live · all five</div>
+        <div class="demo__stage" style="display:grid; gap:var(--sp-4);">
+          <div class="callout callout--note"><p class="t-body-s"><strong>Note.</strong> A neutral aside — context that helps but isn't a warning.</p></div>
+          <div class="callout callout--info"><p class="t-body-s"><strong>Info.</strong> Background the reader needs to make sense of the section.</p></div>
+          <div class="callout callout--success"><p class="t-body-s"><strong>Works alone.</strong> Cut the uplink and the gateway keeps logging — buffered readings forward once it returns.</p></div>
+          <div class="callout callout--warning"><p class="t-body-s"><strong>Still open.</strong> The hub's retention window and the alert-rule file format are not yet decided.</p></div>
+          <div class="callout callout--danger"><p class="t-body-s"><strong>Do not mutate.</strong> An alert rule must never rewrite a reading — it subscribes and flags downstream instead.</p></div>
+        </div>
+        <pre class="demo__code">&lt;div class="callout callout--warning"&gt;
+  &lt;p class="t-body-s"&gt;&lt;strong&gt;Still open.&lt;/strong&gt; …&lt;/p&gt;
+&lt;/div&gt;
+&lt;!-- variants: --note --info --success --warning --danger --&gt;</pre>
+      </div>
+    </section>
+
+    <section class="section" id="labels">
+      <p class="t-eyebrow">02 · Inline labels</p>
+      <h2 class="t-h2">Pills, tags and badges</h2>
+      <p class="t-body">Three weights of inline label. A <strong>pill</strong> is an outlined descriptor, a <strong>tag</strong> is an ice-filled category, a <strong>badge</strong> is a salmon-tinted state marker. All sit inline and share the display face.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage" style="display:flex; flex-wrap:wrap; gap:var(--sp-3); align-items:center;">
+          <span class="pill">One stream · many sites</span>
+          <span class="tag">sensor</span>
+          <span class="tag">måling</span>
+          <span class="tag">varsel</span>
+          <span class="badge">you are here</span>
+          <span class="badge">new</span>
+        </div>
+        <pre class="demo__code">&lt;span class="pill"&gt;One stream&lt;/span&gt;
+&lt;span class="tag"&gt;sensor&lt;/span&gt;
+&lt;span class="badge"&gt;you are here&lt;/span&gt;</pre>
+      </div>
+      <div class="callout callout--note mt5"><p class="t-body-s">On a dark hero, <code>.pill</code> flips to a light outline automatically — no modifier needed.</p></div>
+    </section>
+
+    <section class="section" id="status">
+      <p class="t-eyebrow">03 · Document state</p>
+      <h2 class="t-h2">Status chips</h2>
+      <p class="t-body">A <code>.status</code> chip carries a document's lifecycle state with a coloured dot. Use it in the hero meta-row and in the repo index. Four states cover the review flow.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage" style="display:flex; flex-wrap:wrap; gap:var(--sp-3); align-items:center;">
+          <span class="status status--draft">Draft</span>
+          <span class="status status--proposed">Proposed</span>
+          <span class="status status--accepted">Accepted</span>
+          <span class="status status--deprecated">Deprecated</span>
+        </div>
+        <pre class="demo__code">&lt;span class="status status--proposed"&gt;Proposed&lt;/span&gt;
+&lt;!-- --draft --proposed --accepted --deprecated --&gt;</pre>
+      </div>
+      <div class="demo mt5">
+        <div class="demo__label">Live · in a meta-row</div>
+        <div class="demo__stage">
+          <div class="metarow">
+            <span class="status status--accepted">Accepted</span>
+            <span class="tag">architecture</span>
+            <span class="tag">telemetri</span>
+            <span class="t-caption" style="margin-left:auto;">Updated 2024-05-12 · owner Drift</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stats">
+      <p class="t-eyebrow">04 · Quantities</p>
+      <h2 class="t-h2">The stat block</h2>
+      <p class="t-lead">A row of headline numbers, each with a caption. Reserve it for a handful of figures that carry the argument — four is a good ceiling.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="stats">
+            <div class="stat"><p class="t-h3">4</p><p class="t-caption">sensor feeds</p></div>
+            <div class="stat"><p class="t-h3">1</p><p class="t-caption">telemetry hub</p></div>
+            <div class="stat"><p class="t-h3">0</p><p class="t-caption">dropped readings</p></div>
+            <div class="stat"><p class="t-h3">O(n)</p><p class="t-caption">channels, not O(n²)</p></div>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="stats"&gt;
+  &lt;div class="stat"&gt;&lt;p class="t-h3"&gt;4&lt;/p&gt;&lt;p class="t-caption"&gt;sensor feeds&lt;/p&gt;&lt;/div&gt;
+  …
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <footer class="footer" style="margin-top:var(--sp-7);">
+      <p>Sinkaberg docs kit · <a href="../style-guide.html">back to the style guide</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

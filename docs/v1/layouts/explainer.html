@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tittel — Sinkaberg forklaring</title>
+<!-- Explainer / long-form layout: sticky numbered TOC with scrollspy, numbered sections,
+     callouts, steps, tables and code. Copy this file, replace the content, and point the
+     stylesheet at the published URL:
+       https://sinkaberg.github.io/ui-kits/docs/v1/sinkaberg-docs.css
+     (layouts inside this repo use the relative paths below so the kit previews itself).
+     Bokmål, Blue-segment voice; sentence-case headings, UPPERCASE eyebrows, en-dashes "–". -->
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <!-- Real Sinkaberg logo, inlined from brand/assets/logos/. -->
+    <svg class="logo" role="img" aria-label="Sinkaberg" viewBox="89 76 440 68" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+      <path d="M130.5,142.8c-1.6,0-3.2-0.3-4.8-0.8c-3.7-1.3-6.6-3.9-8.2-7.3c-0.4-0.8-5.9-12.5-10.1-21.4 c-5.3,0-8.6,0-8.9,0l0,0c-2.9-0.4-5.4-2.2-6.6-4.8c-1-2.1-1-4.4-0.2-6.6c0.8-2.1,2.4-3.8,4.5-4.8c2.1-1,4.4-1.1,6.6-0.4 c2.2,0.7,4,2.3,4.9,4.4c0.2,0.4,1.5,3.1,3.2,6.7c5.6,0,12.8-0.1,20.6-0.1l-4.3-9.3c-1.6-3.5-1.7-7.4-0.3-11 c1.4-3.6,4.1-6.5,7.7-8.1c7.4-3.4,16.1-0.5,19.4,6.7c1.6,3.4,6.4,13.7,10.1,21.6c3,0,5.9,0,8.6-0.1l0.2,0l0.2,0 c2.8,0.4,5.2,2.2,6.4,4.7c2,4.3,0,9.4-4.3,11.4c-4.4,2-9.6,0.2-11.5-4c0,0-1.3-2.7-3.1-6.6c-6.6,0-13.5,0.1-20.4,0.1l4.2,9 c1.6,3.5,1.7,7.4,0.3,11c-1.4,3.6-4.1,6.5-7.7,8.1C134.9,142.3,132.7,142.8,130.5,142.8L130.5,142.8z M113.5,113.3 c4.1,8.7,8.9,18.9,9,19.1c1,2.1,2.8,3.7,5,4.5c2.3,0.8,4.8,0.6,7.1-0.4c2.3-1.1,4-2.9,4.9-5.2c0.9-2.2,0.8-4.6-0.2-6.7l-5.3-11.3 C126.5,113.2,119.3,113.2,113.5,113.3L113.5,113.3z M166.5,113c1.2,2.6,2,4.3,2,4.3c0.7,1.5,2.6,2.1,4.2,1.3 c1.6-0.8,2.4-2.6,1.7-4.1c-0.4-0.8-1.1-1.4-2.1-1.6C170.5,112.9,168.6,113,166.5,113L166.5,113z M99.1,107.8c0.5,0,2.6,0,5.7,0 c-1.1-2.4-1.9-4.1-2.1-4.4c-0.3-0.7-0.9-1.2-1.7-1.5c-0.8-0.3-1.7-0.2-2.5,0.2c-0.8,0.4-1.4,1-1.7,1.8c-0.3,0.8-0.3,1.6,0.1,2.3 C97.2,107,98.1,107.6,99.1,107.8L99.1,107.8z M140.9,83.2c-1.4,0-2.8,0.3-4.1,0.9c-2.3,1.1-4,2.9-4.9,5.2c-0.9,2.2-0.8,4.6,0.2,6.7 l5.4,11.6c6.7,0,13.7-0.1,20.4-0.1c-3.5-7.5-7.6-16.3-9-19.3C147.5,85.1,144.3,83.2,140.9,83.2L140.9,83.2z"/>
+      <rect x="239.2" y="90.2" width="6.5" height="39.5"/>
+      <polygon points="285,124.1 284.2,124.1 265.9,90.2 255.3,90.2 255.3,129.6 261.4,129.6 261.4,95.7 262.1,95.7 280.4,129.6 291.1,129.6 291.1,90.2 285,90.2"/>
+      <path d="M351.2,90.2l-13.8,39.5h6.5l3.8-11.1h17.9l4,11.1h6.7L362,90.2H351.2z M349.7,112.9l5.9-17.1h2l6.1,17.1H349.7z"/>
+      <path d="M473.7,114.6c2.2-0.9,3.9-2.3,5.2-4.1c1.2-1.8,1.9-4.2,1.9-7v-0.9c0-2.9-0.6-5.2-1.8-7 c-1.2-1.8-2.9-3.2-5.2-4.1c-2.2-0.9-4.8-1.4-7.8-1.4h-7.3h-2.1h-4.4v39.5h6.5V116h7.3c0.2,0,0.3,0,0.5,0l9.9,13.7h7.7l-11-14.7 C473.3,114.8,473.5,114.7,473.7,114.6z M458.7,95.7h8.1c1.5,0,2.9,0.3,4,1c1.1,0.6,2,1.5,2.6,2.6c0.6,1.1,0.9,2.4,0.9,3.8 c0,1.5-0.3,2.8-0.9,3.9c-0.6,1.1-1.4,2-2.6,2.6c-1.1,0.6-2.4,0.9-4,0.9h-8.1V95.7z"/>
+      <polygon points="425.2,112.4 441.1,112.4 441.1,106.8 425.2,106.8 425.2,95.8 442.1,95.8 442.1,90.2 425.2,90.2 424.1,90.2 418.7,90.2 418.7,129.6 424.1,129.6 425.2,129.6 442.6,129.6 442.6,124 425.2,124"/>
+      <path d="M404.7,109.4c1-0.6,1.9-1.2,2.5-2.1c1.1-1.4,1.7-3.3,1.7-5.8v-0.7c0-3.4-1.1-6-3.3-7.9 c-2.2-1.8-5.5-2.8-9.8-2.8h-7h-1.1h-5.3v39.5h5.3h1.1h8.6c2.9,0,5.4-0.4,7.3-1.3c1.9-0.8,3.4-2.1,4.4-3.7c1-1.6,1.5-3.6,1.5-5.8 v-0.7c0-2.5-0.6-4.4-1.7-5.8C407.8,111,406.4,110,404.7,109.4z M396.6,95.5c2,0,3.5,0.5,4.5,1.6c0.9,1.1,1.4,2.5,1.4,4.2 c0,1.7-0.5,3.1-1.4,4.2c-0.9,1.1-2.4,1.6-4.5,1.6h-7.8V95.5H396.6z M402.5,122.7c-1.1,1.1-2.5,1.6-4.5,1.6h-9.2v-12h9.2 c2,0,3.5,0.5,4.5,1.6c1,1.1,1.6,2.5,1.6,4.4C404.1,120.2,403.6,121.6,402.5,122.7z"/>
+      <path d="M223.5,108.8c-1.9-0.9-4.2-1.5-6.9-1.7l-3.7-0.3c-2-0.2-3.5-0.7-4.4-1.7c-1-1-1.4-2.1-1.4-3.4 c0-1.1,0.3-2.1,0.8-3c0.5-0.9,1.4-1.7,2.4-2.3c1.1-0.6,2.4-0.9,4.1-0.9c1.7,0,3.1,0.3,4.2,0.9c1.1,0.6,1.9,1.4,2.4,2.4 c0.5,1,0.8,2,0.8,3.1h6.1c0-2.4-0.6-4.5-1.7-6.3c-1.1-1.8-2.7-3.1-4.7-4.1c-2-1-4.4-1.5-7.1-1.5c-2.7,0-5,0.5-7,1.5 c-2,1-3.6,2.3-4.7,4c-1.1,1.7-1.7,3.7-1.7,6.1c0,3,1,5.5,3.1,7.4c2.1,1.9,4.8,2.9,8.3,3.2l3.7,0.4c2.5,0.2,4.3,0.8,5.6,1.7 c1.2,0.9,1.8,2.1,1.8,3.5c0,1.2-0.3,2.2-0.9,3.2c-0.6,1-1.6,1.7-2.9,2.3c-1.3,0.6-3,0.9-5,0.9c-2.2,0-4-0.3-5.3-1 c-1.3-0.7-2.2-1.5-2.8-2.5c-0.6-1-0.9-2.1-0.9-3.1h-6c0,2.3,0.6,4.4,1.7,6.2c1.2,1.8,2.9,3.3,5.1,4.3c2.2,1,5,1.6,8.2,1.6 c3,0,5.6-0.5,7.9-1.5c2.2-1,4-2.4,5.2-4.2c1.2-1.8,1.9-3.8,1.9-6.2c0-2.1-0.5-3.9-1.6-5.4C226.9,110.9,225.4,109.7,223.5,108.8z"/>
+      <path d="M526,110.1h-20.3v4.8h11.4v5.3c-0.8,0.9-1.8,1.6-3,2.3c-2,1.1-4.4,1.7-7.1,1.7c-1.9,0-3.7-0.3-5.4-1 c-1.6-0.6-3-1.6-4.2-2.8c-1.2-1.2-2.1-2.7-2.7-4.5c-0.6-1.8-1-3.8-1-6.2c0-2.1,0.3-4,0.9-5.7c0.6-1.7,1.4-3.2,2.5-4.4 c1.1-1.2,2.4-2.2,3.9-2.8c1.5-0.7,3.2-1,5.1-1c1.9,0,3.6,0.3,5.1,1c1.6,0.7,2.9,1.6,3.9,2.9c1,1.3,1.7,2.8,1.9,4.7h6.3 c-0.2-2.8-1.1-5.3-2.6-7.4c-1.5-2.1-3.5-3.8-6-5c-2.5-1.2-5.3-1.8-8.5-1.8c-3,0-5.6,0.5-7.9,1.6c-2.3,1.1-4.3,2.5-5.9,4.3 c-1.6,1.8-2.8,3.9-3.6,6.1c-0.8,2.3-1.2,4.6-1.2,6.9v1.1c0,2.6,0.4,5.1,1.3,7.5c0.9,2.4,2.1,4.4,3.8,6.2c1.7,1.8,3.7,3.2,6.1,4.2 c2.4,1,5.1,1.5,8.2,1.5c3.5,0,6.6-0.6,9.3-1.9c2.7-1.3,4.9-3.1,6.5-5.4v-7.4h3.1V110.1z"/>
+      <polygon points="330.1,90.2 322.7,90.2 307.1,108.6 307.1,90.2 300.6,90.2 300.6,129.6 307.1,129.6 307.1,111.2 310.6,111.2 325.8,129.6 333.8,129.6 315.4,107.5"/>
+    </svg>
+    <p class="t-eyebrow">Eyebrow · kicker</p>
+    <h1 class="t-display">Dokumenttittel i setningsform</h1>
+    <p class="t-lead">Én rolig, klar ingress som rammer inn dokumentet – hva det handler om og hvorfor det betyr noe. Hold tonen composed og presis; laks er aksent, aldri en flate.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+
+  <!-- ============ STICKY TABLE OF CONTENTS (scrollspy via sinkaberg-docs.js) ============ -->
+  <nav class="toc" aria-label="Innhold">
+    <p class="t-eyebrow">Innhold</p>
+    <ol>
+      <li><a href="#bakgrunn" aria-current="location">Bakgrunn</a></li>
+      <li><a href="#tilnaerming">Tilnærming</a></li>
+      <li><a href="#slik-gjor-vi-det">Slik gjør vi det</a></li>
+      <li><a href="#resultater">Resultater</a></li>
+      <li><a href="#neste-steg">Neste steg</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ DOCUMENT BODY ============ -->
+  <main class="doc">
+
+    <section class="section" id="bakgrunn">
+      <p class="t-eyebrow">01 · Bakgrunn</p>
+      <h2 class="t-h2">Seksjonstittel i setningsform</h2>
+      <p class="t-body">Brødtekst i Sinkaberg-stemmen – klar, effektiv, composed. Vi forklarer rolig, aldri høylytt. Bruk tankestrek for innskudd – slik – i norsk stil.</p>
+      <div class="callout callout--info mt5">
+        <p class="t-body-s"><strong>Info.</strong> Bruk en callout for en avgrenset merknad – <code>--note</code>, <code>--info</code>, <code>--success</code>, <code>--warning</code> eller <code>--danger</code>.</p>
+      </div>
+    </section>
+
+    <section class="section" id="tilnaerming">
+      <p class="t-eyebrow">02 · Tilnærming</p>
+      <h2 class="t-h2">Hvordan vi tenker</h2>
+      <p class="t-body">En kort utdyping av prinsippene. To kolonner holder lange resonnement luftige.</p>
+      <div class="cols mt5">
+        <div>
+          <h4 class="t-h4">Prinsipp</h4>
+          <p class="t-body-s">Kort, konkret forklaring.</p>
+        </div>
+        <div>
+          <h4 class="t-h4">Begrunnelse</h4>
+          <p class="t-body-s">Hvorfor det henger sammen med helheten.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="slik-gjor-vi-det">
+      <p class="t-eyebrow">03 · Slik gjør vi det</p>
+      <h2 class="t-h2">Stegene</h2>
+      <p class="t-body">En nummerert liste gir leseren en tydelig rekkefølge.</p>
+      <ol class="steps mt5">
+        <li><p class="t-body">Første steg – beskriv handlingen i klartekst.</p></li>
+        <li><p class="t-body">Andre steg – hva som følger, og hvorfor.</p></li>
+        <li><p class="t-body">Tredje steg – resultatet leseren sitter igjen med.</p></li>
+      </ol>
+      <p class="t-body mt6">Et kommando-eksempel vises i en kodeblokk. Kode bruker en system-mono-stakk, ikke en merkevarefont.</p>
+      <pre class="code"><code>// kode-eksempel
+const standard = naturen.setter();</code></pre>
+    </section>
+
+    <section class="section" id="resultater">
+      <p class="t-eyebrow">04 · Resultater</p>
+      <h2 class="t-h2">Tallene</h2>
+      <p class="t-body">En tabell holder flerkolonnedata rolig og lesbar.</p>
+      <table class="table mt5">
+        <thead>
+          <tr><th>Mål</th><th>Før</th><th>Etter</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Rad én</td><td>0</td><td>0</td></tr>
+          <tr><td>Rad to</td><td>0</td><td>0</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout--success mt5">
+        <p class="t-body-s"><strong>Klart.</strong> En kort, dempet bekreftelse på utfallet.</p>
+      </div>
+    </section>
+
+    <section class="section" id="neste-steg">
+      <p class="t-eyebrow">05 · Neste steg</p>
+      <h2 class="t-h2">Veien videre</h2>
+      <p class="t-body">Avslutt rolig og konkret – hva som skjer nå, og hvem som eier neste skritt.</p>
+    </section>
+
+    <footer class="footer">
+      <p>Sinkaberg · <a href="../index.html">tilbake til oversikten</a></p>
+    </footer>
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

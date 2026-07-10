@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADR-0042 · Buffer readings at the edge — decision record</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow">Decision record · ADR-0042</p>
+    <h1 class="t-h1">Buffer readings at the edge</h1>
+    <p class="t-lead">Site gateways store readings locally and forward them when the shore link allows — store-and-forward — rather than streaming straight to the hub and losing whatever the link can't carry.</p>
+    <div class="metarow mt6">
+      <span class="status status--proposed">Proposed</span>
+      <span class="tag">architecture</span><span class="tag">adr</span>
+      <span class="t-body-s" style="margin-left:auto;">deciders · Drift, Vedlikehold · 2024-05-12</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">ADR</p>
+    <ol>
+      <li><a href="#facts">Record</a></li>
+      <li><a href="#context">Context</a></li>
+      <li><a href="#decision">Decision</a></li>
+      <li><a href="#options">Options considered</a></li>
+      <li><a href="#consequences">Consequences</a></li>
+      <li><a href="#history">History</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="facts">
+      <p class="t-eyebrow">Front matter</p>
+      <h2 class="t-h2">Record</h2>
+      <table class="spec spec--boxed mt5">
+        <tbody>
+          <tr><th>Status</th><td><span class="status status--proposed">Proposed</span></td></tr>
+          <tr><th>Deciders</th><td>Drift · Vedlikehold</td></tr>
+          <tr><th>Date</th><td>2024-05-12</td></tr>
+          <tr><th>Discussion</th><td>issue #7</td></tr>
+          <tr><th>Supersedes</th><td>—</td></tr>
+          <tr><th>Constraint</th><td>No reading may be lost to a shore-link outage</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="context">
+      <p class="t-eyebrow">Why now</p>
+      <h2 class="t-h2">Context</h2>
+      <p class="t-body">After a season of operation, gaps in <code>«Bøyeloggen»</code> clustered around storms — exactly when readings matter most. The sensors kept measuring, but stream-only gateways dropped whatever the shore link couldn't carry, so HMS thresholds in «Strømvarsel» fired late or not at all, and no one on «Vaktlista» was paged.</p>
+      <div class="callout callout--info mt5"><p class="t-body-s">One constraint ran through the whole discussion: <strong>no reading may depend on the shore link being up</strong>. Whatever we decide must hold on the gateway hardware alone.</p></div>
+    </section>
+
+    <section class="section" id="decision">
+      <p class="t-eyebrow">What we decided</p>
+      <h2 class="t-h2">Decision</h2>
+      <blockquote class="quote mt5">
+        <p>Every site gateway buffers readings locally and forwards them when the link allows — store-and-forward, with the hub as the single subscriber per site.</p>
+      </blockquote>
+      <ol class="steps mt6">
+        <li><p class="t-body"><strong>Sensors publish locally.</strong> Each instrument publishes to its site gateway over the site network — plain publish–subscribe, never a direct line to shore.</p></li>
+        <li><p class="t-body"><strong>The buffer comes first.</strong> Every reading lands in the gateway's local store before any forward attempt is made.</p></li>
+        <li><p class="t-body"><strong>Forwarding is ordered and idempotent.</strong> The backlog drains oldest-first; the hub deduplicates on <code>site · sensor · timestamp</code>.</p></li>
+        <li><p class="t-body"><strong>Alerts evaluate at the edge.</strong> «Strømvarsel» thresholds run on the gateway too, so «Vaktlista» still pages the on-call during an outage.</p></li>
+      </ol>
+    </section>
+
+    <section class="section" id="options">
+      <p class="t-eyebrow">The road not taken</p>
+      <h2 class="t-h2">Options considered</h2>
+      <table class="table mt5">
+        <thead><tr><th>Option</th><th>Why not</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Stream-only to the hub</strong></td><td>Any link drop loses readings; the storm-gap problem never gets solved. The gaps land precisely on the readings HMS needs.</td></tr>
+          <tr><td><strong>Buffer at each sensor</strong></td><td>Dozens of tiny stores per site to operate; the instruments lack the storage and battery to hold a real backlog.</td></tr>
+          <tr><td><strong>Redundant shore links per site</strong></td><td>Reduces outages but can't eliminate them — a mediator that still fails whole. Doubles network cost without removing the loss mode.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="consequences">
+      <p class="t-eyebrow">What follows</p>
+      <h2 class="t-h2">Consequences</h2>
+      <div class="compare mt5">
+        <div class="compare-col compare--do">
+          <header><span class="cc-icon">✓</span> We gain</header>
+          <ul>
+            <li>No readings lost to shore-link outages.</li>
+            <li>The hub sees one ordered stream per site.</li>
+            <li>Edge alerts keep working when a site is cut off.</li>
+            <li>New sensors join by publishing to the gateway — the hub is untouched.</li>
+          </ul>
+        </div>
+        <div class="compare-col compare--dont">
+          <header><span class="cc-icon">✕</span> We accept</header>
+          <ul>
+            <li>Gateway storage to size and monitor.</li>
+            <li>Backlog drain competes with live readings after long outages.</li>
+            <li>Vedlikehold owns one more box per site.</li>
+            <li>Dashboards can lag reality while a backlog drains.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout--warning mt5"><p class="t-body-s"><strong>Still open.</strong> The retention window on the gateway store · backpressure when the buffer fills · whether camera stills ride the same buffer as the <code>readings</code> topic · which «Ternebåen» hardware revision becomes the reference gateway.</p></div>
+    </section>
+
+    <section class="section" id="history">
+      <p class="t-eyebrow">Trail</p>
+      <h2 class="t-h2">History</h2>
+      <ul class="timeline mt5">
+        <li class="is-done"><div class="tl-meta"><span class="tl-date">2024-03-18</span><span class="tl-title">Problem observed</span></div><p class="t-body-s" style="margin:0;">A spring storm left a two-day gap in «Bøyeloggen» for «Ternebåen».</p></li>
+        <li class="is-done"><div class="tl-meta"><span class="tl-date">2024-04-29</span><span class="tl-title">Design session</span></div><p class="t-body-s" style="margin:0;">Store-and-forward sketched end to end; constraint made explicit.</p></li>
+        <li class="is-current"><div class="tl-meta"><span class="tl-date">2024-05-12</span><span class="tl-title">This record opened</span> <span class="status status--proposed">Proposed</span></div><p class="t-body-s" style="margin:0;">Awaiting review by both deciders on issue #7.</p></li>
+      </ul>
+
+      <footer class="footer" style="margin-top:var(--sp-7);">
+        <p>Sinkaberg – ADR-0042 · <a href="../index.html">back to index</a> · discussion: issue #7</p>
+      </footer>
+    </section>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

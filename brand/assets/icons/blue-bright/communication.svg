@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="ikoner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3e7dee;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="cls-1" x="42.23" y="36.08" width="51.29" height="5"/>
+    <g>
+      <rect class="cls-1" x="67.3" y="46.8" width="35.3" height="5" transform="translate(-9.98 74.51) rotate(-45)"/>
+      <rect class="cls-1" x="82.46" y="10.22" width="5" height="35.3" transform="translate(5.18 68.24) rotate(-45)"/>
+    </g>
+  </g>
+  <g>
+    <rect class="cls-1" x="6.48" y="58.92" width="51.29" height="5"/>
+    <g>
+      <rect class="cls-1" x="-2.61" y="48.2" width="35.3" height="5" transform="translate(-31.44 25.49) rotate(-45)"/>
+      <rect class="cls-1" x="12.54" y="54.48" width="5" height="35.3" transform="translate(-46.6 31.76) rotate(-45)"/>
+    </g>
+  </g>
+</svg>

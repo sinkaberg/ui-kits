@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restart a stuck site gateway — runbook</title>
+<link rel="stylesheet" href="../sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="t-eyebrow">Runbook · operations</p>
+    <h1 class="t-h1">Restart a stuck site gateway</h1>
+    <p class="t-lead">The recovery pass for a gateway that has stopped forwarding after a power or network outage. Store-and-forward means nothing is lost — the buffer replays once the service is back.</p>
+    <div class="metarow mt6">
+      <span class="status status--accepted">Accepted</span>
+      <span class="badge">on-call</span>
+      <span class="t-body-s" style="color:var(--on-navy-3);">owner · Drift · updated 2026-07-04</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">Runbook</p>
+    <ol>
+      <li><a href="#when">When to run</a></li>
+      <li><a href="#pre">Pre-flight</a></li>
+      <li><a href="#run">Run the restart</a></li>
+      <li><a href="#check">Confirm</a></li>
+      <li><a href="#rollback">Rollback</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="when">
+      <p class="t-eyebrow">Trigger</p>
+      <h2 class="t-h2">When to run this</h2>
+      <div class="callout callout--warning"><p class="t-body-s"><strong>Restart is idempotent, never destructive.</strong> The buffer lives on disk and survives the restart; queued readings replay to the hub in order. This runbook is safe to run at any time — it cannot drop a reading.</p></div>
+      <dl class="dl mt5">
+        <dt>«Strømvarsel» alert</dt><dd>The «gateway silent» alert fires when the hub has heard nothing for 15 minutes. Start here.</dd>
+        <dt>After a site outage</dt><dd>Run by hand once power or the link is back, if the gateway has not resumed forwarding on its own.</dd>
+        <dt>After maintenance</dt><dd>When Vedlikehold has had the cabinet open, a manual restart confirms the service came back cleanly.</dd>
+      </dl>
+    </section>
+
+    <section class="section" id="pre">
+      <p class="t-eyebrow">Step 1</p>
+      <h2 class="t-h2">Pre-flight checklist</h2>
+      <p class="t-body">Confirm all four before starting. If any fails, resolve it first — do not force past a red check.</p>
+      <ul class="timeline mt5">
+        <li class="is-done"><div class="tl-meta"><span class="tl-title">Alert confirmed in «Strømvarsel»</span></div><p class="t-body-s" style="margin:0;">The alert names this gateway and is still open — you are fixing the right site.</p></li>
+        <li class="is-done"><div class="tl-meta"><span class="tl-title">Link is back up</span></div><p class="t-body-s" style="margin:0;">The gateway answers ping from the hub; if not, this is a network fault, not a stuck service.</p></li>
+        <li class="is-done"><div class="tl-meta"><span class="tl-title">Buffer disk has room</span></div><p class="t-body-s" style="margin:0;"><code>gw disk</code> shows the buffer partition under 90% — a full disk needs escalation, not a restart.</p></li>
+        <li class="is-current"><div class="tl-meta"><span class="tl-title">You can reach the console</span></div><p class="t-body-s" style="margin:0;">SSH to the gateway works, or the site technician on «Vaktlista» is on the line.</p></li>
+      </ul>
+    </section>
+
+    <section class="section" id="run">
+      <p class="t-eyebrow">Step 2</p>
+      <h2 class="t-h2">Run the restart</h2>
+      <p class="t-body">One command. It stops the forwarder, verifies the buffer index, and starts the service again — the buffer itself is never touched.</p>
+      <div class="codeblock mt5">
+        <div class="codeblock__bar"><span class="codeblock__name">terminal</span><span class="codeblock__lang">bash</span></div>
+        <pre><code><span class="ln cmt"># check first — prints service and buffer state, changes nothing</span><span class="ln ln--hl">gw status --verbose</span><span class="ln"></span><span class="ln cmt"># then, the restart</span><span class="ln">gw restart forwarder</span></code></pre>
+      </div>
+      <div class="callout callout--danger mt5"><p class="t-body-s"><strong>Never pass <code>--flush</code>.</strong> Flushing drops the buffer, and the outage window's readings with it. The whole point of store-and-forward is that the replay happens on its own.</p></div>
+    </section>
+
+    <section class="section" id="check">
+      <p class="t-eyebrow">Step 3</p>
+      <h2 class="t-h2">Confirm the outcome</h2>
+      <table class="spec spec--boxed mt5">
+        <tbody>
+          <tr><th>Expected</th><td>Forwarder reports «running»; «Strømvarsel» clears the alert within one poll cycle</td></tr>
+          <tr><th>Backfill</th><td>Buffer depth falls steadily; the hub shows the outage window filling in oldest-first.</td></tr>
+          <tr><th>Runtime</th><td>≈ 2–10 min depending on buffer depth. A stall usually means the hub is throttling the replay.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout callout--success mt5"><p class="t-body-s"><strong>Green.</strong> The alert is closed, the buffer is at zero, and the outage window is complete in «Bøyeloggen». Note the restart in the shift log — your job is done.</p></div>
+    </section>
+
+    <section class="section" id="rollback">
+      <p class="t-eyebrow">If it goes wrong</p>
+      <h2 class="t-h2">Rollback</h2>
+      <p class="t-lead">Because the restart is idempotent and the buffer survives it, rollback is just running it again — nothing is deleted at any step.</p>
+      <ol class="steps mt5">
+        <li><p class="t-body"><strong>Restart again.</strong> A second <code>gw restart forwarder</code> is always safe; replay resumes from the buffer index.</p></li>
+        <li><p class="t-body"><strong>Fix the cause.</strong> A gateway that sticks twice after the same outage almost always has a failing buffer disk — check it before the next storm.</p></li>
+        <li><p class="t-body"><strong>Re-check «Strømvarsel».</strong> Confirm the alert closed and no new one fired before you sign off.</p></li>
+      </ol>
+      <div class="callout callout--note mt6"><p class="t-body-s">Escalate to Vedlikehold only if the hardware itself won't come up — a stuck service is always recoverable from the console and never needs a site visit on its own.</p></div>
+
+      <footer class="footer" style="margin-top:var(--sp-7);">
+        <p>Sinkaberg – runbook · <a href="../index.html">back to index</a> · on-call: Drift</p>
+      </footer>
+    </section>
+
+  </main>
+</div>
+
+<script src="../sinkaberg-docs.js" defer></script>
+</body>
+</html>

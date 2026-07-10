@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sinkaberg UI Kits</title>
+<link rel="stylesheet" href="docs/v1/sinkaberg-docs.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img src="brand/assets/logos/sinkaberg-horizontal-white.svg" alt="Sinkaberg" style="display:block;height:44px;width:auto;margin:0 0 var(--sp-4);">
+    <h1 class="t-display">UI Kits</h1>
+    <p class="t-lead">Self-contained, versioned kits — stylesheets, fonts and templates that Sinkaberg documents link directly. Within a major version only compatible changes land; breaking changes ship as a new major folder alongside the old one.</p>
+  </div>
+</header>
+
+<div class="wrap" style="padding-bottom:var(--sp-9);">
+
+  <section class="idx-group">
+    <div class="idx-group__head">
+      <h2 class="t-h4" style="margin:0;">Kits</h2>
+      <span class="idx-group__count">1</span>
+    </div>
+    <div class="idx-list">
+      <a class="idx-item" href="docs/v1/style-guide.html">
+        <div class="idx-main">
+          <h3 class="idx-title">Docs kit</h3>
+          <p class="idx-desc">Branded HTML documentation for git repos — one stylesheet, six page layouts, element galleries and a live style guide.</p>
+          <div class="idx-meta">
+            <span class="tag">documentation</span><span class="tag">html</span>
+            <span class="idx-owner">stylesheet · <b>docs/v1/sinkaberg-docs.css</b></span>
+          </div>
+        </div>
+        <div class="idx-side"><span class="status status--accepted">v1 · current</span><span class="idx-updated">2026-07-09</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:0;">
+    <h2 class="t-h4">How to use a kit</h2>
+    <p class="t-body" style="max-width:68ch;">Link the versioned URL straight from your document — no copies in your repo:</p>
+    <pre class="code mt4"><code>&lt;link rel="stylesheet" href="https://sinkaberg.github.io/ui-kits/docs/v1/sinkaberg-docs.css"&gt;</code></pre>
+    <p class="t-body-s mt4" style="max-width:68ch;">The <code>v1</code> path is the compatibility contract: it only ever receives compatible updates. Releases are tagged (<code>docs/v1.x.y</code>) with a line in the <a href="https://github.com/sinkaberg/ui-kits/blob/main/CHANGELOG.md">changelog</a>. Keep a local clone as an offline fallback.</p>
+  </section>
+
+  <footer class="footer">
+    <p>Sinkaberg · <a href="https://github.com/sinkaberg/ui-kits">github.com/sinkaberg/ui-kits</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
