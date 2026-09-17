@@ -1,0 +1,268 @@
+<!doctype html>
+<!-- @dsCard group="UI Kit — App" name="App Kit — Style Guide" subtitle="Blocks for server-rendered app pages: header, card, data table, badge, definition grid, details, empty state" viewport="1280x760" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style guide — Sinkaberg app kit</title>
+<link rel="stylesheet" href="sinkaberg-app.css">
+</head>
+<body>
+
+<header class="app-header">
+  <span class="app-header__name">Nordvon</span>
+  <span class="app-header__user">Innlogget som Kari Nordvon</span>
+</header>
+
+<header class="hero hero--light">
+  <div class="wrap">
+    <p class="t-eyebrow">Sinkaberg app kit</p>
+    <h1 class="t-display">The app element style guide</h1>
+    <p class="t-lead">Plain CSS for server-rendered app pages — dashboards, admin screens, report viewers. No JavaScript, no build step: one <code>&lt;link&gt;</code> per page. Fictional sample content throughout.</p>
+    <p class="mt6"><span class="pill">v1 · 2026-09-17</span> <a href="../../index.html" style="color:var(--fg-2);">Repo index →</a></p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc" aria-label="Contents">
+    <p class="t-eyebrow">Blocks</p>
+    <ol>
+      <li><a href="#header">App header</a></li>
+      <li><a href="#card">Card</a></li>
+      <li><a href="#dl">Definition grid</a></li>
+      <li><a href="#table">Data table</a></li>
+      <li><a href="#badge">Badge</a></li>
+      <li><a href="#details">Collapsible details</a></li>
+      <li><a href="#misc">Muted text &amp; empty state</a></li>
+    </ol>
+  </nav>
+
+  <main class="doc">
+
+    <section class="section" id="header">
+      <p class="t-eyebrow">01 · App shell</p>
+      <h2 class="t-h2">App header</h2>
+      <p class="t-lead">A one-line shell header: product name on the left, an optional signed-in-as line on the right. The <code>__user</code> line is optional — omit it on a public page.</p>
+      <div class="cat mt5">
+        <div class="cat-item">
+          <div>
+            <p class="cat-name">App header</p>
+            <p class="cat-class">.app-header · .app-header__name · .app-header__user</p>
+          </div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live</div>
+              <div class="demo__stage" style="padding:0;">
+                <header class="app-header">
+                  <span class="app-header__name">Nordvon</span>
+                  <span class="app-header__user">Innlogget som Kari Nordvon</span>
+                </header>
+              </div>
+              <pre class="demo__code">&lt;header class="app-header"&gt;
+  &lt;span class="app-header__name"&gt;Nordvon&lt;/span&gt;
+  &lt;span class="app-header__user"&gt;Innlogget som Kari Nordvon&lt;/span&gt;
+&lt;/header&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="card">
+      <p class="t-eyebrow">02 · Container</p>
+      <h2 class="t-h2">Card</h2>
+      <p class="t-lead">The salmon-topped container from <code>brand/components.css</code>, reused as-is — the app kit adds no card variant, only what goes inside one.</p>
+      <div class="cat mt5">
+        <div class="cat-item">
+          <div><p class="cat-name">Card</p><p class="cat-class">.card</p></div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live</div>
+              <div class="demo__stage">
+                <div class="card">
+                  <p class="t-h5" style="margin:0 0 var(--sp-2);">Faktura 2026-04211</p>
+                  <p class="t-body-s muted" style="margin:0;">Fjordbris Emballasje AS · 2026-09-02</p>
+                </div>
+              </div>
+              <pre class="demo__code">&lt;div class="card"&gt;
+  &lt;p class="t-h5"&gt;Faktura 2026-04211&lt;/p&gt;
+  &lt;p class="t-body-s muted"&gt;Fjordbris Emballasje AS · 2026-09-02&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dl">
+      <p class="t-eyebrow">03 · Key facts</p>
+      <h2 class="t-h2">Definition grid</h2>
+      <p class="t-lead">Label/value pairs inside a card — an invoice header, a summary block. Collapses to stacked rows below 560px. Add <code>.num</code> to a <code>dd</code> for a tabular-numeral amount.</p>
+      <div class="cat mt5">
+        <div class="cat-item">
+          <div><p class="cat-name">Definition grid</p><p class="cat-class">.dl · dd.num</p></div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live</div>
+              <div class="demo__stage">
+                <div class="card">
+                  <dl class="dl">
+                    <dt>Beløp</dt><dd class="num">18 450,00 NOK</dd>
+                    <dt>Kunde</dt><dd>Nordvon Produksjon AS (914 000 111)</dd>
+                    <dt>Forfall</dt><dd>2026-09-30</dd>
+                  </dl>
+                </div>
+              </div>
+              <pre class="demo__code">&lt;dl class="dl"&gt;
+  &lt;dt&gt;Beløp&lt;/dt&gt;&lt;dd class="num"&gt;18 450,00 NOK&lt;/dd&gt;
+  &lt;dt&gt;Kunde&lt;/dt&gt;&lt;dd&gt;Nordvon Produksjon AS (914 000 111)&lt;/dd&gt;
+&lt;/dl&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="table">
+      <p class="t-eyebrow">04 · Rows of data</p>
+      <h2 class="t-h2">Data table</h2>
+      <p class="t-lead">The shared <code>.table</code>, plus two app-only modifiers: <code>.table--fixed</code> for a line-items table with a fixed layout, and <code>.num</code> on a header or cell for a right-aligned, tabular-numeral column.</p>
+      <div class="cat mt5">
+        <div class="cat-item">
+          <div><p class="cat-name">Data table</p><p class="cat-class">.table · .table--fixed · th.num / td.num</p></div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live · fixed layout, numeric column</div>
+              <div class="demo__stage">
+                <div style="overflow-x:auto;">
+                  <table class="table table--fixed">
+                    <thead><tr><th>Linje</th><th>Beskrivelse</th><th>Resultat</th><th class="num">Beløp</th></tr></thead>
+                    <tbody>
+                      <tr><td>1</td><td>Laksefilet, superior, 3–4 kg</td><td><span class="badge badge--pass">PASS</span></td><td class="num">14 200,00</td></tr>
+                      <tr><td>2</td><td>Emballasje, isoporkasse 40L</td><td><span class="badge badge--fail">FAIL</span></td><td class="num">4 250,00</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <pre class="demo__code">&lt;table class="table table--fixed"&gt;
+  &lt;thead&gt;&lt;tr&gt;…&lt;th class="num"&gt;Beløp&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;…&lt;td class="num"&gt;14 200,00&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="badge">
+      <p class="t-eyebrow">05 · Check results</p>
+      <h2 class="t-h2">Badge</h2>
+      <p class="t-lead">The generic salmon <code>.badge</code> from <code>brand/components.css</code>, plus a result modifier per outcome. Add <code>.badge--action</code> for the one badge that carries the page's headline verdict.</p>
+      <div class="cat mt5">
+        <div class="cat-item">
+          <div>
+            <p class="cat-name">Result badge</p>
+            <p class="cat-class">.badge--pass · --fail · --skipped · --unmapped · --warning · --high-priority-warning · --error</p>
+          </div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live · all seven states</div>
+              <div class="demo__stage" style="display:flex; flex-wrap:wrap; gap:var(--sp-3);">
+                <span class="badge badge--pass">PASS</span>
+                <span class="badge badge--fail">FAIL</span>
+                <span class="badge badge--skipped">SKIPPED</span>
+                <span class="badge badge--unmapped">UNMAPPED</span>
+                <span class="badge badge--warning">WARNING</span>
+                <span class="badge badge--high-priority-warning">HIGH-PRIORITY WARNING</span>
+                <span class="badge badge--error">ERROR</span>
+              </div>
+              <pre class="demo__code">&lt;span class="badge badge--pass"&gt;PASS&lt;/span&gt;
+&lt;span class="badge badge--fail"&gt;FAIL&lt;/span&gt;
+&lt;span class="badge badge--high-priority-warning"&gt;HIGH-PRIORITY WARNING&lt;/span&gt;</pre>
+            </div>
+            <div class="demo mt4">
+              <div class="demo__label">Live · action variant</div>
+              <div class="demo__stage">
+                <span class="badge badge--pass badge--action">GODKJENN</span>
+              </div>
+              <pre class="demo__code">&lt;span class="badge badge--pass badge--action"&gt;GODKJENN&lt;/span&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="details">
+      <p class="t-eyebrow">06 · Optional detail</p>
+      <h2 class="t-h2">Collapsible details card</h2>
+      <p class="t-lead">A native <code>&lt;details&gt;</code> styled as a card, with a chevron that rotates open — metadata a reader rarely needs, kept one click away. No JS.</p>
+      <div class="cat mt5">
+        <div class="cat-item">
+          <div><p class="cat-name">Details card</p><p class="cat-class">details.card</p></div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live</div>
+              <div class="demo__stage">
+                <details class="card">
+                  <summary>Om denne analysen</summary>
+                  <dl class="dl mt3">
+                    <dt>Analysert</dt><dd>2026-09-16 08:14</dd>
+                    <dt>Modell</dt><dd>gpt-5.3-chat</dd>
+                  </dl>
+                </details>
+              </div>
+              <pre class="demo__code">&lt;details class="card"&gt;
+  &lt;summary&gt;Om denne analysen&lt;/summary&gt;
+  &lt;dl class="dl mt3"&gt;…&lt;/dl&gt;
+&lt;/details&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="misc">
+      <p class="t-eyebrow">07 · Small helpers</p>
+      <h2 class="t-h2">Muted text &amp; empty state</h2>
+      <p class="t-lead">A de-emphasised secondary line, and a single-line message for a table or list with nothing in it.</p>
+      <div class="cat mt5">
+        <div class="cat-item">
+          <div><p class="cat-name">Muted text</p><p class="cat-class">.muted</p></div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live</div>
+              <div class="demo__stage">
+                <p style="margin:0;">Fjordbris Emballasje AS <span class="muted">(998 244 010)</span></p>
+              </div>
+              <pre class="demo__code">&lt;span class="muted"&gt;(998 244 010)&lt;/span&gt;</pre>
+            </div>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div><p class="cat-name">Empty state</p><p class="cat-class">.empty</p></div>
+          <div class="cat-body">
+            <div class="demo">
+              <div class="demo__label">Live</div>
+              <div class="demo__stage" style="padding:0;">
+                <div class="card">
+                  <p class="empty">Ingen fakturaer venter kontroll.</p>
+                </div>
+              </div>
+              <pre class="demo__code">&lt;div class="card"&gt;
+  &lt;p class="empty"&gt;Ingen fakturaer venter kontroll.&lt;/p&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer mt7">
+      <p>Sinkaberg · app kit v1 · <a href="../../index.html">repo index</a> · <a href="README.md">README</a></p>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>

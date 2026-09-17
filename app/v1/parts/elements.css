@@ -1,0 +1,46 @@
+/* App-kit elements — blocks specific to server-rendered app pages (dashboards,
+   report viewers, admin screens). Reuses .card / .badge / .table from
+   brand/components.css; everything here is additive, tokens only. */
+
+/* --- app shell header: product name + optional signed-in-as line --- */
+.app-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--sp-3) var(--sp-5); padding: var(--sp-3) var(--sp-6); border-bottom: 1px solid var(--line); font-family: var(--font-body); font-size: var(--fs-body-s); color: var(--fg-3); }
+.app-header__name { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body); color: var(--fg-1); }
+.app-header__user { color: var(--fg-3); }
+
+/* --- definition grid: label/value pairs, typically inside a .card --- */
+.dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: var(--sp-2) var(--sp-6); align-items: baseline; }
+.dl dt { font-family: var(--font-body); font-weight: 500; font-size: var(--fs-body-s); color: var(--fg-3); }
+.dl dd { margin: 0; font-family: var(--font-body); font-size: var(--fs-body-s); color: var(--fg-2); }
+.dl dd.num { font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .dl { grid-template-columns: 1fr; gap: var(--sp-1) 0; } .dl dd { margin-bottom: var(--sp-2); } }
+
+/* --- data table variants: fixed layout (for line-item tables with a mix of
+   text and numeric columns) and a numeric-column cell modifier --- */
+.table--fixed { table-layout: fixed; }
+.table--fixed th, .table--fixed td { overflow-wrap: break-word; }
+.table th.num, .table td.num { font-variant-numeric: tabular-nums; text-align: right; }
+
+/* --- badge result modifiers: the seven check-result states plus an
+   emphasised "action" size variant. Base .badge (salmon) is the generic
+   marker from brand/components.css; these override colour by intent. --- */
+.badge--pass { color: var(--success); background: color-mix(in srgb, var(--success) 14%, var(--bg-1)); }
+.badge--fail { color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, var(--bg-1)); }
+.badge--skipped { color: var(--ink-3); background: color-mix(in srgb, var(--ink-3) 12%, var(--bg-1)); }
+.badge--warning, .badge--unmapped { color: var(--warning); background: color-mix(in srgb, var(--warning) 14%, var(--bg-1)); }
+.badge--high-priority-warning { color: color-mix(in srgb, var(--warning) 40%, var(--danger) 60%); background: color-mix(in srgb, color-mix(in srgb, var(--warning) 40%, var(--danger) 60%) 16%, var(--bg-1)); }
+.badge--error { color: color-mix(in srgb, var(--danger) 60%, var(--navy) 40%); background: color-mix(in srgb, var(--danger) 22%, var(--bg-1)); }
+.badge--action { font-size: var(--fs-body-s); padding: var(--sp-2) var(--sp-4); }
+
+/* --- muted text: a de-emphasised inline note (org numbers, secondary ids) --- */
+.muted { color: var(--fg-3); }
+
+/* --- empty-state line: nothing to show in a table or list --- */
+.empty { padding: var(--sp-6) 0; text-align: center; font-size: var(--fs-body-s); color: var(--fg-3); }
+
+/* --- collapsible details card: same frame as .card, with a styled summary --- */
+details.card { padding: var(--sp-4) var(--sp-5); }
+details.card > summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: var(--fs-body-s); color: var(--fg-1); list-style: none; }
+details.card > summary::-webkit-details-marker { display: none; }
+details.card > summary::before { content: "\203A"; display: inline-block; width: 1em; margin-right: var(--sp-2); color: var(--ink-3); transition: transform var(--dur) var(--ease); }
+details.card[open] > summary::before { transform: rotate(90deg); }
+details.card[open] > summary { margin-bottom: var(--sp-3); }
