@@ -21,7 +21,7 @@
   <section class="idx-group">
     <div class="idx-group__head">
       <h2 class="t-h4" style="margin:0;">Kits</h2>
-      <span class="idx-group__count">1</span>
+      <span class="idx-group__count">2</span>
     </div>
     <div class="idx-list">
       <a class="idx-item" href="docs/v1/style-guide.html">
@@ -35,14 +35,26 @@
         </div>
         <div class="idx-side"><span class="status status--accepted">v1 · current</span><span class="idx-updated">2026-07-09</span></div>
       </a>
+      <a class="idx-item" href="app/v1/style-guide.html">
+        <div class="idx-main">
+          <h3 class="idx-title">App kit</h3>
+          <p class="idx-desc">Plain CSS for a server-rendered app page — app header, card, data table, result badges, definition grid, collapsible details, empty state.</p>
+          <div class="idx-meta">
+            <span class="tag">app</span><span class="tag">html</span>
+            <span class="idx-owner">stylesheet · <b>app/v1/sinkaberg-app.css</b></span>
+          </div>
+        </div>
+        <div class="idx-side"><span class="status status--accepted">v1 · current</span><span class="idx-updated">2026-09-17</span></div>
+      </a>
     </div>
   </section>
 
   <section class="section" style="border-top:0;">
     <h2 class="t-h4">How to use a kit</h2>
-    <p class="t-body" style="max-width:68ch;">Link the versioned URL straight from your document — no copies in your repo:</p>
-    <pre class="code mt4"><code>&lt;link rel="stylesheet" href="https://sinkaberg.github.io/ui-kits/docs/v1/sinkaberg-docs.css"&gt;</code></pre>
-    <p class="t-body-s mt4" style="max-width:68ch;">The <code>v1</code> path is the compatibility contract: it only ever receives compatible updates. Releases are tagged (<code>docs/v1.x.y</code>) with a line in the <a href="https://github.com/sinkaberg/ui-kits/blob/main/CHANGELOG.md">changelog</a>. Keep a local clone as an offline fallback.</p>
+    <p class="t-body" style="max-width:68ch;">Link the versioned URL straight from your document or app page — no copies in your repo:</p>
+    <pre class="code mt4"><code>&lt;link rel="stylesheet" href="https://sinkaberg.github.io/ui-kits/docs/v1/sinkaberg-docs.css"&gt;
+&lt;link rel="stylesheet" href="https://sinkaberg.github.io/ui-kits/app/v1/sinkaberg-app.css"&gt;</code></pre>
+    <p class="t-body-s mt4" style="max-width:68ch;">The <code>v1</code> path is the compatibility contract: it only ever receives compatible updates. Releases are tagged (<code>docs/v1.x.y</code>, <code>app/v1.x.y</code>) with a line in the <a href="https://github.com/sinkaberg/ui-kits/blob/main/CHANGELOG.md">changelog</a>. An app that must not depend on the kit host at runtime can vendor the pinned stylesheet plus <code>fonts/</code> at image build instead — see each kit's README. Keep a local clone as an offline fallback.</p>
   </section>
 
   <footer class="footer">

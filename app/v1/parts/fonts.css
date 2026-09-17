@@ -1,0 +1,6 @@
+/* Local variable fonts — no network dependency. Paths resolve relative
+   to this CSS file, so pages at any depth work unchanged.
+   Licence: SIL Open Font License 1.1 — see fonts/OFL-Sora.txt and fonts/OFL-Inter.txt. */
+@font-face { font-family: "Sora"; src: url("fonts/Sora-Variable.ttf") format("truetype-variations"); font-weight: 100 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-Variable.ttf") format("truetype-variations"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-Italic-Variable.ttf") format("truetype-variations"); font-weight: 100 900; font-style: italic; font-display: swap; }
