@@ -1,15 +1,18 @@
 /* Adherence lint — the component layer and page layouts may reference brand colour
    only through design-system tokens (var(--token)), never a raw hex.
 
-   Scope note: this lints the token *consumers* — brand/components.css and the page
-   layouts under docs/v1/layouts/. It deliberately does NOT lint the token-definition
-   file (brand/colors_and_type.css, where hex literals define the tokens) nor the
-   generated bundle (docs/v1/sinkaberg-docs.css, which inlines those definitions and
-   the style-guide's code-syntax swatches).
+   Scope note: this lints the token *consumers* — brand/components.css, the page
+   layouts under docs/v1/layouts/, the app kit's source parts under app/v1/parts/,
+   and the app kit's own top-level HTML (app/v1/*.html — the style guide). It
+   deliberately does NOT lint the token-definition file (brand/colors_and_type.css,
+   where hex literals define the tokens) nor the generated bundles
+   (docs/v1/sinkaberg-docs.css, app/v1/sinkaberg-app.css, which inline those
+   definitions and the style-guide's code-syntax swatches).
 
    Library:  import { lintCss } from "./adherence-lint.mjs"
    CLI:      node tools/adherence-lint.mjs [files...]
-             (defaults to brand/components.css + docs/v1/layouts/**; exits 1 on any violation) */
+             (defaults to brand/components.css + docs/v1/layouts/** +
+             app/v1/parts/** + app/v1/*.html; exits 1 on any violation) */
 
 import { readFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -65,9 +68,27 @@ function walk(dir, exts) {
   });
 }
 
+/** Non-recursive: files directly inside dir (not its subfolders) ending in one of exts. */
+function listTopLevel(dir, exts) {
+  let entries;
+  try {
+    entries = readdirSync(dir, { withFileTypes: true });
+  } catch {
+    return []; // dir does not exist
+  }
+  return entries
+    .filter((e) => e.isFile() && exts.some((ext) => e.name.endsWith(ext)))
+    .map((e) => join(dir, e.name));
+}
+
 /** Default targets, resolved relative to the repo root. */
 export function defaultTargets() {
-  return [join(ROOT, "brand/components.css"), ...walk(join(ROOT, "docs/v1/layouts"), [".html"])];
+  return [
+    join(ROOT, "brand/components.css"),
+    ...walk(join(ROOT, "docs/v1/layouts"), [".html"]),
+    ...walk(join(ROOT, "app/v1/parts"), [".css"]),
+    ...listTopLevel(join(ROOT, "app/v1"), [".html"]),
+  ];
 }
 
 function resolveTargets(args) {
