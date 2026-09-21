@@ -1,7 +1,8 @@
 /* Kit integrity checks — dependency-free (node --test, Node ≥20 stdlib only).
 
    1. Each published kit bundle is in sync with its source parts (assemble is reproducible).
-   2. The token consumers (components, docs layouts, app parts + style guide) carry no raw hex. */
+   2. The docs kit's logos stay derived from brand/assets/logos.
+   3. The token consumers (components, docs layouts, app parts + style guide) carry no raw hex. */
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -15,6 +16,14 @@ for (const kit of KITS) {
     assert.equal(committed, assemble(kit), `${kit.bundle} is stale — run \`npm run assemble\``);
   });
 }
+
+test("docs kit logos are the brand logos with the clear space cropped", () => {
+  for (const name of ["sinkaberg-horizontal.svg", "sinkaberg-horizontal-white.svg"]) {
+    const brand = readFileSync(new URL(`../brand/assets/logos/${name}`, import.meta.url), "utf8");
+    const kit = readFileSync(new URL(`../docs/v1/logos/${name}`, import.meta.url), "utf8");
+    assert.equal(kit, brand.replace('viewBox="0 0 619 219"', 'viewBox="89 76 440 68"'), `${name} drifted from brand/`);
+  }
+});
 
 test("components + layouts + app parts are token-only (no raw hex)", () => {
   const offenders = [];

@@ -21,6 +21,7 @@
     <p class="t-eyebrow">On this page</p>
     <ol>
       <li><a href="#table">Data table</a></li>
+      <li><a href="#num">Numeric &amp; signed</a></li>
       <li><a href="#spec">Spec table</a></li>
       <li><a href="#compare">Do / don't</a></li>
       <li><a href="#dl">Definition list</a></li>
@@ -33,11 +34,11 @@
     <section class="section" id="table">
       <p class="t-eyebrow">01 · Many rows</p>
       <h2 class="t-h2">The data table</h2>
-      <p class="t-lead">Zebra striping, an uppercase display-face header, and a salmon-free hover. Wrap it in a scroll container so it never overflows the measure on narrow screens.</p>
+      <p class="t-lead">Zebra striping, an uppercase display-face header, and a salmon-free hover. Wrap it in <code>.table-scroll</code> so it never overflows the measure on narrow screens.</p>
       <div class="demo mt5">
         <div class="demo__label">Live</div>
         <div class="demo__stage">
-          <div style="overflow-x:auto;">
+          <div class="table-scroll">
             <table class="table">
               <thead><tr><th>Concept</th><th>Pattern · in the ADR</th><th>Platform-native</th><th>User-facing</th></tr></thead>
               <tbody>
@@ -49,7 +50,7 @@
             </table>
           </div>
         </div>
-        <pre class="demo__code">&lt;div style="overflow-x:auto;"&gt;
+        <pre class="demo__code">&lt;div class="table-scroll"&gt;
   &lt;table class="table"&gt;
     &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Concept&lt;/th&gt;…&lt;/tr&gt;&lt;/thead&gt;
     &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;edge buffering&lt;/td&gt;…&lt;/tr&gt;&lt;/tbody&gt;
@@ -58,8 +59,35 @@
       </div>
     </section>
 
+    <section class="section" id="num">
+      <p class="t-eyebrow">02 · Figures in columns</p>
+      <h2 class="t-h2">Numeric columns &amp; signed values</h2>
+      <p class="t-body">Put <code>.num</code> on the <code>th</code> and every <code>td</code> of a number column: right-aligned, tabular figures, so digits line up. Mark a change with <code>.pos</code> or <code>.neg</code> — good or bad <em>for the subject</em>, not simply up or down — and always keep the <code>+</code>/<code>−</code> sign, which carries the meaning in greyscale print.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <div class="table-scroll">
+            <table class="table">
+              <thead><tr><th>Site</th><th class="num">Readings</th><th class="num">Dropped</th><th class="num">Change</th></tr></thead>
+              <tbody>
+                <tr><td>«Måkeholmen»</td><td class="num">12 480</td><td class="num">3</td><td class="num pos">−41 %</td></tr>
+                <tr><td>«Svartskjær»</td><td class="num">9 112</td><td class="num">27</td><td class="num neg">+18 %</td></tr>
+                <tr><td>«Langøya»</td><td class="num">10 936</td><td class="num">0</td><td class="num">0 %</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <pre class="demo__code">&lt;div class="table-scroll"&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Site&lt;/th&gt;&lt;th class="num"&gt;Dropped&lt;/th&gt;&lt;th class="num"&gt;Change&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;«Måkeholmen»&lt;/td&gt;&lt;td class="num"&gt;3&lt;/td&gt;&lt;td class="num pos"&gt;−41 %&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
     <section class="section" id="spec">
-      <p class="t-eyebrow">02 · One thing's attributes</p>
+      <p class="t-eyebrow">03 · One thing's attributes</p>
       <h2 class="t-h2">Key–value spec table</h2>
       <p class="t-body">No header row — a left label column and a value column. Perfect for a document's front-matter, an entity's properties, or an endpoint's parameters. Add <code>.spec--boxed</code> for a bordered, filled-label variant.</p>
       <div class="demo mt5">
@@ -82,7 +110,7 @@
     </section>
 
     <section class="section" id="compare">
-      <p class="t-eyebrow">03 · Guidance</p>
+      <p class="t-eyebrow">04 · Guidance</p>
       <h2 class="t-h2">Do / don't comparison</h2>
       <p class="t-lead">Two columns, green ticks against red crosses. Use it to turn a principle into concrete practice — the shape reads faster than a paragraph of prose.</p>
       <div class="demo mt5">
@@ -118,7 +146,7 @@
     </section>
 
     <section class="section" id="dl">
-      <p class="t-eyebrow">04 · Term &amp; definition</p>
+      <p class="t-eyebrow">05 · Term &amp; definition</p>
       <h2 class="t-h2">Definition list</h2>
       <p class="t-body">A compact two-column <code>&lt;dl&gt;</code> for short term–definition pairs inside a section. Collapses to stacked rows on narrow screens.</p>
       <div class="demo mt5">
@@ -137,7 +165,7 @@
     </section>
 
     <section class="section" id="glossary">
-      <p class="t-eyebrow">05 · Full glossary</p>
+      <p class="t-eyebrow">06 · Full glossary</p>
       <h2 class="t-h2">Glossary rows</h2>
       <p class="t-body">For a standalone glossary page, <code>.glossary</code> gives each term a full row with an optional mono <em>also-known-as</em> line — more room to breathe than the inline <code>.dl</code>.</p>
       <div class="demo mt5">

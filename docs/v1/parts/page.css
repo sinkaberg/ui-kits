@@ -15,6 +15,12 @@ body { margin: 0; background: var(--bg-2); color: var(--fg-2); padding: 0; }
 a:focus-visible, .toc a:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: var(--r-xs); }
 @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } .toc { position: static; } }
 
+/* --- compact one-pager: tighter hero + denser reading container --- */
+.hero--compact { padding-block: var(--sp-6); }
+.hero--compact .logo { margin-bottom: var(--sp-6); }
+.doc--dense .section { padding-block: var(--sp-5); }
+.doc--dense .table th, .doc--dense .table td { padding: var(--sp-2) var(--sp-3); }
+
 /* --- composite figure (nested boxes, tokens only) --- */
 .whole { border: 1.5px solid var(--line-strong); border-radius: var(--r-lg); background: var(--bg-1); padding: var(--sp-5); }
 .whole-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-3); margin-bottom: var(--sp-4); }
@@ -110,9 +116,17 @@ a:focus-visible, .toc a:focus-visible { outline: 2px solid var(--focus); outline
    7 · PRINT
    ============================================================ */
 @media print {
-  .toc, .modal, dialog, .idx-controls, .filters { display: none !important; }
+  @page { size: A4; margin: 14mm; }
+  .toc, nav, .actions, .btn, .modal, dialog, .idx-controls, .filters { display: none !important; }
   .card, .callout, .code, .codeblock, .stat, .step, .idx-item, .tabs { box-shadow: none; }
-  .section { break-inside: avoid; }
+  .hero { border-radius: 0; break-inside: avoid; }
+  .wrap { max-width: none; padding-inline: 0; }
+  .section, .card, .callout, .stat, .stats, .table, .footer { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  .hero--compact { padding: var(--sp-5); }
+  .doc--dense .section { padding-block: var(--sp-3); }
+  .doc--dense .card, .doc--dense .stat, .doc--dense .callout { padding: var(--sp-3); }
+  * { overflow: visible !important; }
   .section + .section { border-top: 0; }
   .tabs__panel[hidden] { display: block !important; }
   a { color: inherit; text-decoration: underline; }
