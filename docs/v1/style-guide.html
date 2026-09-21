@@ -81,6 +81,7 @@
         <div class="cat-item"><div><p class="cat-name">Badge</p><p class="cat-class">.badge</p></div><div class="cat-body"><p class="cat-when">Salmon-tinted state marker — «you are here», «new». The loudest of the three; use once.</p></div></div>
         <div class="cat-item"><div><p class="cat-name">Status chip</p><p class="cat-class">.status · --draft --proposed --accepted --deprecated</p></div><div class="cat-body"><p class="cat-when">A document's lifecycle state with a coloured dot. Put it in the hero meta-row and in the repo index.</p></div></div>
         <div class="cat-item"><div><p class="cat-name">Stat block</p><p class="cat-class">.stats · .stat</p></div><div class="cat-body"><p class="cat-when">A row of headline numbers with captions. Reserve for the few figures that carry the argument — four is the ceiling.</p></div></div>
+        <div class="cat-item"><div><p class="cat-name">Signed value</p><p class="cat-class">.pos · .neg</p></div><div class="cat-body"><p class="cat-when">Colour a change by whether it is good or bad <em>for the subject</em> — in a table cell, in prose, or on a stat number. Always keep the <code>+</code>/<code>−</code> sign; it carries the meaning in greyscale print. Not for use on navy.</p></div></div>
       </div>
     </section>
 
@@ -90,7 +91,9 @@
       <p class="t-lead">Choose by shape: many rows, one thing's attributes, guidance, or term–definition.</p>
       <p class="mt4"><a class="btn btn--outline" href="elements/tables.html">Open the gallery →</a></p>
       <div class="cat mt5">
-        <div class="cat-item"><div><p class="cat-name">Data table</p><p class="cat-class">.table</p></div><div class="cat-body"><p class="cat-when">Many rows, several columns, a header. Zebra stripes and an uppercase header. Wrap in <code>overflow-x:auto</code> so it never breaks the measure.</p></div></div>
+        <div class="cat-item"><div><p class="cat-name">Data table</p><p class="cat-class">.table</p></div><div class="cat-body"><p class="cat-when">Many rows, several columns, a header. Zebra stripes and an uppercase header. Wrap in <code>.table-scroll</code> so it never breaks the measure.</p></div></div>
+        <div class="cat-item"><div><p class="cat-name">Numeric column</p><p class="cat-class">.table .num</p></div><div class="cat-body"><p class="cat-when">On the <code>th</code> and every <code>td</code> of a number column: right-aligned, tabular figures.</p></div></div>
+        <div class="cat-item"><div><p class="cat-name">Table scroll wrapper</p><p class="cat-class">.table-scroll</p></div><div class="cat-body"><p class="cat-when">A <code>div</code> around a wide table; scrolls sideways on narrow screens, prints in full.</p></div></div>
         <div class="cat-item"><div><p class="cat-name">Spec table</p><p class="cat-class">.spec · .spec--boxed</p></div><div class="cat-body"><p class="cat-when">Key–value pairs for one thing's attributes — front-matter, entity properties, endpoint params. No header row. <code>--boxed</code> adds a bordered, filled-label frame.</p></div></div>
         <div class="cat-item"><div><p class="cat-name">Do / don't</p><p class="cat-class">.compare · .compare--do · .compare--dont</p></div><div class="cat-body"><p class="cat-when">Two columns, green ticks vs red crosses. Turns a principle into concrete practice faster than a paragraph.</p></div></div>
         <div class="cat-item"><div><p class="cat-name">Definition list</p><p class="cat-class">.dl</p></div><div class="cat-body"><p class="cat-when">Compact term–definition pairs inside a section. Collapses to stacked rows on narrow screens.</p></div></div>
@@ -125,6 +128,8 @@
         <div class="cat-item"><div><p class="cat-name">Cards &amp; grid</p><p class="cat-class">.card · .grid · .cols</p></div><div class="cat-body"><p class="cat-when">The salmon-topped container; auto-fit several in a <code>.grid</code>, or split two peers with <code>.cols</code>.</p></div></div>
         <div class="cat-item"><div><p class="cat-name">Composite figure</p><p class="cat-class">.whole · .layer · .area-grid · .area-box</p></div><div class="cat-body"><p class="cat-when">The nested-boxes diagram for a layered system — a central layer over independent parts. Pure HTML, no SVG.</p></div></div>
         <div class="cat-item"><div><p class="cat-name">Diagram vocabulary</p><p class="cat-class">.dg-node · .dg-edge · .dg-label · .dg-legend</p></div><div class="cat-body"><p class="cat-when">Hand-authored SVG that inherits the brand's nodes, edges and salmon emphasis. Wrap in a <code>.card</code> figure with a legend and caption.</p></div></div>
+        <div class="cat-item"><div><p class="cat-name">Compact one-pager</p><p class="cat-class">.hero--compact · .doc--dense</p></div><div class="cat-body"><p class="cat-when">A tighter hero and denser sections and tables for a memo that must fit one or two printed sheets. <code>.hero--compact</code> on the hero, <code>.doc--dense</code> on the reading container.</p></div></div>
+        <div class="cat-item"><div><p class="cat-name">Logo</p><p class="cat-class">&lt;img class="logo"&gt; · logos/sinkaberg-horizontal[-white].svg</p></div><div class="cat-body"><p class="cat-when">The wordmark as a file — white on the navy hero, navy on <code>.hero--light</code>. An <code>&lt;img&gt;</code> does not inherit <code>currentColor</code>, hence one file per colour.</p></div></div>
       </div>
     </section>
 

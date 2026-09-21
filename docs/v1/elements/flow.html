@@ -26,6 +26,7 @@
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#cards">Cards &amp; grid</a></li>
       <li><a href="#diagram">Diagram vocabulary</a></li>
+      <li><a href="#compact">Compact one-pager &amp; logo</a></li>
     </ol>
   </nav>
 
@@ -203,6 +204,35 @@
         <figcaption class="figcap">Node classes: <code>.dg-node</code>, <code>.dg-node--navy</code>, <code>.dg-node--ice</code>. Edges: <code>.dg-edge</code>, <code>--dashed</code>, <code>--emphasis</code>. Labels: <code>.dg-label</code>, <code>--on-navy</code>, <code>--salmon</code>.</figcaption>
       </figure>
       <div class="callout callout--info mt5"><p class="t-body-s">Define the two <code>&lt;marker&gt;</code> arrowheads once inside the SVG's <code>&lt;defs&gt;</code>; the edge classes reference them by id.</p></div>
+    </section>
+
+    <section class="section" id="compact">
+      <p class="t-eyebrow">07 · Page chrome</p>
+      <h2 class="t-h2">Compact one-pager &amp; the logo</h2>
+      <p class="t-body">For a memo that must fit one or two printed sheets, add <code>.hero--compact</code> to the hero and <code>.doc--dense</code> to the reading container: tighter hero and logo spacing, tighter sections and table cells, on screen and in print. The kit's print rules already set A4, drop buttons and navigation, and keep cards, callouts, stats and tables from splitting across pages.</p>
+      <p class="t-body mt4">The logo is a file, not inlined markup: <code>logos/sinkaberg-horizontal-white.svg</code> on the navy hero, <code>logos/sinkaberg-horizontal.svg</code> (navy) on <code>.hero--light</code>. An <code>&lt;img&gt;</code> does not inherit <code>currentColor</code>, hence one file per colour. From another repo, link <code>https://sinkaberg.github.io/ui-kits/docs/v1/logos/sinkaberg-horizontal-white.svg</code>.</p>
+      <div class="demo mt5">
+        <div class="demo__label">Live</div>
+        <div class="demo__stage">
+          <header class="hero hero--compact">
+            <img class="logo" src="../logos/sinkaberg-horizontal-white.svg" alt="Sinkaberg">
+            <p class="t-eyebrow">Notat</p>
+            <p class="t-h3">En tett overskrift</p>
+          </header>
+          <header class="hero hero--light hero--compact mt4">
+            <img class="logo" src="../logos/sinkaberg-horizontal.svg" alt="Sinkaberg">
+            <p class="t-eyebrow">Notat</p>
+            <p class="t-h3">Samme, på lys bunn</p>
+          </header>
+        </div>
+        <pre class="demo__code">&lt;header class="hero hero--compact"&gt;
+  &lt;div class="wrap"&gt;
+    &lt;img class="logo" src="https://sinkaberg.github.io/ui-kits/docs/v1/logos/sinkaberg-horizontal-white.svg" alt="Sinkaberg"&gt;
+    …
+  &lt;/div&gt;
+&lt;/header&gt;
+&lt;main class="wrap doc doc--dense"&gt;…&lt;/main&gt;</pre>
+      </div>
     </section>
 
     <footer class="footer" style="margin-top:var(--sp-7);">

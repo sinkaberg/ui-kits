@@ -58,7 +58,7 @@ ui-kits/
 │   └── assets/logos|icons|imagery
 ├── docs/v1/                      the docs kit (published, hotlinkable)
 │   ├── sinkaberg-docs.css         GENERATED bundle — do not hand-edit
-│   ├── sinkaberg-docs.js, fonts/, layouts/, elements/, style-guide.html, index.html
+│   ├── sinkaberg-docs.js, fonts/, logos/, layouts/, elements/, style-guide.html, index.html
 │   ├── diagram-recipe.md
 │   └── parts/                     kit-specific source layers: fonts.css, elements.css, page.css
 ├── app/v1/                       the app kit (published, hotlinkable)

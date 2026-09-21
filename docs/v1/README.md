@@ -11,15 +11,16 @@ docs/v1/
 ├── sinkaberg-docs.css        ← the one stylesheet every page links (tokens → components → elements)
 ├── sinkaberg-docs.js         ← optional: TOC scrollspy, tabs, index search/filter (all degrade without it)
 ├── fonts/                    ← Sora + Inter variable fonts, served next to the CSS
+├── logos/                    ← the horizontal wordmark, tightly cropped for `<img class="logo">` (white + navy)
 ├── index.html                ← repo table of contents — grouped by type, searchable, filterable
 ├── style-guide.html          ← element catalog: what each element is, when to use it, its class
 ├── architecture-explainer.html ← the original long-form doc, re-based onto the shared CSS
 ├── elements/                 ← live galleries with copy-pasteable markup
 │   ├── typography.html       ← type scale, eyebrow, highlight, pull quote, kbd, footnotes
 │   ├── callouts.html         ← 5 callouts, pills/tags/badges, status chips, stats
-│   ├── tables.html           ← data table, spec table, do/don't, definition list, glossary
+│   ├── tables.html           ← data table, numeric columns + signed values, spec table, do/don't, definition list, glossary
 │   ├── code.html             ← code block, annotated code, diff lines, repo tree
-│   └── flow.html             ← steps, pipeline, tabs, timeline, cards, diagram vocabulary
+│   └── flow.html             ← steps, pipeline, tabs, timeline, cards, diagram vocabulary, compact one-pager + logo
 ├── diagram-recipe.md         ← how to hand-author on-brand inline-SVG diagrams (.dg-* vocab ships in the kit)
 └── layouts/                  ← starting points — copy one, replace the content
     ├── guide.html            ← how-to walkthrough (prereqs, steps, verify)
@@ -52,6 +53,18 @@ never restyled out from under you.
 sibling folder to your projects. Search/replace
 `https://sinkaberg.github.io/ui-kits/` → your local path and every page renders
 from disk.
+
+**Logo:** link the file instead of inlining the SVG — white on the navy hero,
+navy on `.hero--light`:
+
+```html
+<img class="logo" src="https://sinkaberg.github.io/ui-kits/docs/v1/logos/sinkaberg-horizontal-white.svg" alt="Sinkaberg">
+<img class="logo" src="https://sinkaberg.github.io/ui-kits/docs/v1/logos/sinkaberg-horizontal.svg" alt="Sinkaberg">
+```
+
+An `<img>` does not inherit `currentColor`, hence one file per colour. The files
+are `brand/assets/logos/sinkaberg-horizontal*.svg` with the clear space cropped
+away, so `.logo`'s height is the wordmark's height.
 
 ## Writing a new document
 
