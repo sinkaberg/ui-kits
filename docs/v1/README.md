@@ -1,6 +1,6 @@
 # Sinkaberg Docs Kit — v1
 
-Branded HTML documentation for a git repository — one shared stylesheet, one optional script, six page layouts, and a live style guide.
+Branded HTML documentation for a git repository — one shared stylesheet, one optional script, eight page layouts, and a live style guide.
 
 Live style guide: https://sinkaberg.github.io/ui-kits/docs/v1/style-guide.html
 

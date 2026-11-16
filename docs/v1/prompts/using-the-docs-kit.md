@@ -2,7 +2,7 @@
 
 Sinkaberg has a documentation UI kit (published at `sinkaberg/ui-kits` under `docs/v1/`; live at https://sinkaberg.github.io/ui-kits/docs/v1/) for branded HTML documentation living in git repos. Use it whenever you produce documentation for Sinkaberg — do not restyle from scratch.
 
-Structure: one shared stylesheet `sinkaberg-docs.css` (design tokens → components → doc elements; self-hosted Sora/Inter fonts), one optional `sinkaberg-docs.js` (TOC scrollspy, tabs, index search/filter — every page must still work without it), and six page layouts in `layouts/`. Pick by the reader's job:
+Structure: one shared stylesheet `sinkaberg-docs.css` (design tokens → components → doc elements; self-hosted Sora/Inter fonts), one optional `sinkaberg-docs.js` (TOC scrollspy, tabs, index search/filter — every page must still work without it), and eight page layouts in `layouts/`. Pick by the reader's job:
 
 - **do** something → `guide`
 - **look up** a fact → `reference`
@@ -10,6 +10,8 @@ Structure: one shared stylesheet `sinkaberg-docs.css` (design tokens → compone
 - **respond** to an incident → `runbook`
 - **remember why** → `decision-record`
 - **catch up** on a period → `status-recap`
+- **read a long-form piece** → `explainer`
+- **decide on a proposal** → `proposal`
 
 To write a new document: copy the closest layout, keep its shell (hero → sticky `.toc` + `main.doc`), replace the content, link the stylesheet by its versioned public URL (`https://sinkaberg.github.io/ui-kits/docs/v1/sinkaberg-docs.css`), and add an entry to the repo's `index.html` (title, one-line description, tags, owner, status chip, updated date, under the right type group).
 
